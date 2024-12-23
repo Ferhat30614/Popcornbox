@@ -16,6 +16,7 @@ class dizilerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        //docıhdcoıhdsocdsoıcıodsofıbvdfbovbnd
         return inflater.inflate(R.layout.fragment_diziler, container, false)
     }
 
