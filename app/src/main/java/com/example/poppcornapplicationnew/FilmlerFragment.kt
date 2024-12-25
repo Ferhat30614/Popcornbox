@@ -20,8 +20,8 @@ class FilmlerFragment : Fragment() {
 
         binding=FragmentFilmlerBinding.inflate(inflater,container,false)
 
-        binding.rvmovie.setHasFixedSize(true)
-        binding.rvmovie.layoutManager=GridLayoutManager(requireContext(),3)
+        binding.rvMovie.setHasFixedSize(true)
+        binding.rvMovie.layoutManager=GridLayoutManager(requireContext(),3)
 
         list= ArrayList()
 
@@ -43,7 +43,7 @@ class FilmlerFragment : Fragment() {
 
         adapter=MovieAdapter(requireContext(),list)
 
-        binding.rvmovie.adapter=adapter
+        binding.rvMovie.adapter=adapter
 
 
         return binding.root
