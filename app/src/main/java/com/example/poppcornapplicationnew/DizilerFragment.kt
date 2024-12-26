@@ -86,6 +86,7 @@ class DizilerFragment : Fragment() {
                         tvShowList.addAll(newTVShows)
                     }
                     adapter.notifyDataSetChanged() // Listeyi güncelle
+                    //deneme
                 }
             }
 
