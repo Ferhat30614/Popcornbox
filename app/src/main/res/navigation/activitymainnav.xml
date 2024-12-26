@@ -9,20 +9,52 @@
         android:id="@+id/dizilerFragment"
         android:name="com.example.poppcornapplicationnew.DizilerFragment"
         android:label="fragment_diziler"
-        tools:layout="@layout/fragment_diziler" />
+        tools:layout="@layout/fragment_diziler" >
+        <action
+            android:id="@+id/actionDizidenDetaya"
+            app:destination="@id/TVShowDetailFragment">
+            <argument
+                android:name="tvShow"
+                app:argType="com.example.poppcornapplicationnew.TVShow" />
+        </action>
+    </fragment>
+
     <fragment
         android:id="@+id/filmlerFragment"
         android:name="com.example.poppcornapplicationnew.FilmlerFragment"
         android:label="fragment_filmler"
-        tools:layout="@layout/fragment_filmler" />
+        tools:layout="@layout/fragment_filmler" >
+        <action
+            android:id="@+id/actionfilmdendetaya"
+            app:destination="@id/moviedetails" />
+    </fragment>
+
     <fragment
         android:id="@+id/birinciFragment"
         android:name="com.example.poppcornapplicationnew.BirinciFragment"
         android:label="fragment_birinci"
         tools:layout="@layout/fragment_birinci" />
+
     <fragment
         android:id="@+id/ikinciFragment"
         android:name="com.example.poppcornapplicationnew.IkinciFragment"
         android:label="fragment_ikinci"
         tools:layout="@layout/fragment_ikinci" />
+
+    <fragment
+        android:id="@+id/TVShowDetailFragment"
+        android:name="com.example.poppcornapplicationnew.TVShowDetailFragment"
+        android:label="TVShowDetailFragment" >
+        <argument
+            android:name="tvShow"
+            app:argType="com.example.poppcornapplicationnew.TVShow" />
+    </fragment>
+    <fragment
+        android:id="@+id/moviedetails"
+        android:name="com.example.poppcornapplicationnew.Moviedetails"
+        android:label="Moviedetails" >
+        <argument
+            android:name="movieShow"
+            app:argType="com.example.poppcornapplicationnew.Movie" />
+    </fragment>
 </navigation>

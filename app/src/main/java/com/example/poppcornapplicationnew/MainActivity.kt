@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(binding.navigationView,controller)
 
-        binding.toolbar.title = "Başlık"
+        binding.toolbar.title = "Popcorn Application"
 
         val toggle = ActionBarDrawerToggle(this,binding.drawer,binding.toolbar,
             0,0)

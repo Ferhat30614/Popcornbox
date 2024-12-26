@@ -7,56 +7,45 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
-class TVShowAdapter (private val mcontext: Context, private val  TVShowArraylist:List<TVShow>):
-    RecyclerView.Adapter<TVShowAdapter.NesneTutucu>(){
+class TVShowAdapter(
+    private val mcontext: Context,
+    private val tvShowArrayList: List<TVShow>
+) : RecyclerView.Adapter<TVShowAdapter.NesneTutucu>() {
 
-
-
-
-
-    inner class NesneTutucu(layout: View):RecyclerView.ViewHolder(layout){
-
-        var Card: CardView
-        var imageViewFilm: ImageView
-        var textViewFilmAd: TextView
-
-        init {
-            Card=layout.findViewById(R.id.Card)
-            imageViewFilm=layout.findViewById(R.id.imageViewFilm)
-            textViewFilmAd=layout.findViewById(R.id.textViewFilmAd)
-        }
-
+    inner class NesneTutucu(layout: View) : RecyclerView.ViewHolder(layout) {
+        var card: CardView = layout.findViewById(R.id.Card)
+        var imageViewFilm: ImageView = layout.findViewById(R.id.imageViewFilm)
+        var textViewFilmAd: TextView = layout.findViewById(R.id.textViewFilmAd)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NesneTutucu {
-        val layout= LayoutInflater.from(mcontext).inflate(R.layout.card_layout,parent,false)
+        val layout = LayoutInflater.from(mcontext).inflate(R.layout.card_layout, parent, false)
         return NesneTutucu(layout)
-
     }
 
     override fun getItemCount(): Int {
-        return TVShowArraylist.size
+        return tvShowArrayList.size
     }
 
     override fun onBindViewHolder(holder: NesneTutucu, position: Int) {
+        val nesnem = tvShowArrayList[position]
+        holder.textViewFilmAd.text = nesnem.name
 
-        val nesnem=TVShowArraylist[position]
-        holder.textViewFilmAd.text=nesnem.name
-
-        holder.imageViewFilm.setImageResource(mcontext.resources.getIdentifier(nesnem.posterPath,"drawable",mcontext.packageName))
-
-        holder.Card.setOnClickListener(){
-
-
+        if (nesnem.posterPath != null) {
+            Picasso.get().load("https://image.tmdb.org/t/p/w500${nesnem.posterPath}")
+                .placeholder(R.drawable.yukleniyo)
+                .error(R.drawable.interstellar)
+                .into(holder.imageViewFilm)
         }
 
-
-
-
+        holder.card.setOnClickListener {
+            // Navigation Graph ile geçiş
+            val action = DizilerFragmentDirections.actionDizidenDetaya(nesnem)
+            Navigation.findNavController(holder.textViewFilmAd).navigate(action)
+        }
     }
-
-
-
 }

@@ -3,10 +3,8 @@
 
     <item
         android:id="@+id/filmlerFragment"
-        android:icon="@drawable/resimfilm"
         android:title="Filmler" />
     <item
         android:id="@+id/dizilerFragment"
-        android:icon="@drawable/resimdizi"
         android:title="Diziler" />
 </menu>

@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 class MovieAdapter (private val mcontext:Context,private val  movieArraylist:List<Movie>):RecyclerView.Adapter<MovieAdapter.NesneTutucu>() {
 
@@ -42,9 +44,23 @@ class MovieAdapter (private val mcontext:Context,private val  movieArraylist:Lis
         val nesnem=movieArraylist[position]
         holder.textViewFilmAd.text=nesnem.title
 
-        holder.imageViewFilm.setImageResource(mcontext.resources.getIdentifier(nesnem.posterPath,"drawable",mcontext.packageName))
+
+        if (nesnem.posterPath!=null)
+        {
+            Picasso.get().load("https://image.tmdb.org/t/p/w500${nesnem.posterPath}")
+                .placeholder(R.drawable.yukleniyo)
+                .error(R.drawable.interstellar)
+                .into(holder.imageViewFilm)
+        }
 
         holder.Card.setOnClickListener(){
+
+
+            val action=FilmlerFragmentDirections.actionfilmdendetaya(nesnem)
+            Navigation.findNavController(holder.textViewFilmAd).navigate(action)
+
+
+
 
 
         }

@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("androidx.navigation.safeargs")
+    id ("kotlin-parcelize")
+
+
 }
 
 android {
@@ -52,4 +55,15 @@ dependencies {
 
     implementation ("androidx.navigation:navigation-fragment-ktx:2.8.5")
     implementation ("androidx.navigation:navigation-ui-ktx:2.8.5")
+
+
+
+
+    implementation("com.squareup.retrofit2:retrofit:2.1.0")
+
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.squareup.retrofit2:converter-gson:2.1.0")
+    implementation("com.squareup.picasso:picasso:2.71828")
+
+
 }

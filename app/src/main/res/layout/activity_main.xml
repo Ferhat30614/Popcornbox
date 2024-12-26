@@ -9,13 +9,11 @@
     tools:menu="@menu/bottom_nav_tasarim"
     tools:openDrawer="start">
 
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <!-- Toolbar -->
 
+        <!-- Toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="0dp"
@@ -52,6 +50,17 @@
             app:layout_constraintTop_toBottomOf="@id/bottomNav"
             app:navGraph="@navigation/activitymainnav" />
 
+        <!-- Yeni FragmentContainerView -->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/secondary_fragment_containeri"
+            android:name="androidx.fragment.app.Fragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/navigation_host_fragment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -60,6 +69,5 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:menu="@menu/nav_menu" />
-
 
 </androidx.drawerlayout.widget.DrawerLayout>

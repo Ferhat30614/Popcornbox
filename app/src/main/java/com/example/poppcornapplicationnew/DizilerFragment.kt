@@ -6,52 +6,92 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.poppcornapplicationnew.databinding.FragmentDizilerBinding
-
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class DizilerFragment : Fragment() {
 
     private lateinit var binding: FragmentDizilerBinding
-    private lateinit var adapter:TVShowAdapter
-    private lateinit var list:ArrayList<TVShow>
+    private lateinit var adapter: TVShowAdapter
+    private lateinit var tvShowList: ArrayList<TVShow>
+    private lateinit var gmdi: TVShowDaoInterface
 
+    private var currentPage = 1
+    private var totalPages = 1
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentDizilerBinding.inflate(inflater, container, false)
 
-        binding=FragmentDizilerBinding.inflate(inflater,container,false)
-
+        // RecyclerView ve Adapter ayarları
         binding.rvTVShow.setHasFixedSize(true)
-        binding.rvTVShow.layoutManager=GridLayoutManager(requireContext(),3)
+        binding.rvTVShow.layoutManager = GridLayoutManager(requireContext(), 3)
 
+        tvShowList = ArrayList()
+        adapter = TVShowAdapter(requireContext(), tvShowList)
+        binding.rvTVShow.adapter = adapter
 
-        list= ArrayList()
+        // API arayüzü
+        gmdi = ApiUtils.getTVDaoInterface()
 
+        // İlk sayfayı yükle
+        getDiziler(currentPage)
 
-        val tvShow1 = TVShow(false, "/path/to/backdrop1.jpg", arrayListOf(10765, 18), 1001, arrayListOf("US"), "en", "Stranger Things", "A group of kids in the 80s uncover supernatural mysteries.", 3500.25, "interstellar", "2016-07-15", "interstellar", 8.7, 9000)
-        val tvShow2 = TVShow(false, "/path/to/backdrop2.jpg", arrayListOf(16, 35), 1002, arrayListOf("JP"), "ja", "Attack on Titan", "A dystopian world where humans fight against giant creatures.", 4000.5, "inception", "2013-04-07", "inception", 9.1, 15000)
-        val tvShow3 = TVShow(false, "/path/to/backdrop3.jpg", arrayListOf(18, 9648), 1003, arrayListOf("UK"), "en", "Sherlock", "A modern adaptation of Sherlock Holmes solving mysteries in London.", 2800.75, "django", "2010-07-25", "django", 9.0, 8000)
-        val tvShow4 = TVShow(false, "/path/to/backdrop4.jpg", arrayListOf(35, 18), 1004, arrayListOf("US"), "en", "Friends", "A comedic exploration of six friends navigating life and relationships in New York.", 4500.3, "birzamanlaranadoluda", "birzamanlaranadoluda", "Friends", 8.5, 12000)
-        val tvShow5 = TVShow(false, "/path/to/backdrop5.jpg", arrayListOf(10759, 28), 1005, arrayListOf("US"), "en", "The Mandalorian", "A lone bounty hunter makes his way through the galaxy after the fall of the Empire.", 5000.2, "thehatefuleight", "thehatefuleight", "The Mandalorian", 8.8, 7000)
-        val tvShow6 = TVShow(false, "/path/to/backdrop6.jpg", arrayListOf(16, 10762), 1006, arrayListOf("US"), "en", "Avatar: The Last Airbender", "A young boy must embrace his destiny as the Avatar to bring peace to the world.", 3700.6, "thepianist", "thepianist", "Avatar: The Last Airbender", 9.2, 11000)
+        // Sonsuz kaydırma dinleyicisi ekle
+        binding.rvTVShow.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
 
+                val layoutManager = recyclerView.layoutManager as GridLayoutManager
+                val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+                val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
+                val totalItemCount = layoutManager.itemCount
 
-        list.add(tvShow1)
-        list.add(tvShow2)
-        list.add(tvShow3)
-        list.add(tvShow4)
-        list.add(tvShow5)
-        list.add(tvShow6)
+                // Aşağı kaydırma: Yeni sayfa yükleme
+                if (lastVisibleItemPosition == totalItemCount - 1 && currentPage < totalPages) {
+                    currentPage++
+                    getDiziler(currentPage)
+                }
 
-
-
-
-        adapter=TVShowAdapter(requireContext(),list)
-
-        binding.rvTVShow.adapter=adapter
-
+                // Yukarı kaydırma: Önceki sayfayı yükleme
+                if (firstVisibleItemPosition == 0 && currentPage > 1) {
+                    currentPage--
+                    getDiziler(currentPage, isAppendToTop = true)
+                }
+            }
+        })
 
         return binding.root
     }
 
+    private fun getDiziler(page: Int, isAppendToTop: Boolean = false) {
+        gmdi.getTvShow(page = page).enqueue(object : Callback<TVShowResponse> {
+            override fun onResponse(call: Call<TVShowResponse>, response: Response<TVShowResponse>) {
+                if (response.isSuccessful && response.body() != null) {
+                    val tvShowResponse = response.body()!!
+                    totalPages = tvShowResponse.totalPages // Toplam sayfa sayısını güncelle
 
+                    // Yeni gelen dizileri kontrol et ve sadece yeni olanları ekle
+                    val newTVShows = tvShowResponse.results.filter { tvShow ->
+                        tvShowList.none { it.id == tvShow.id } // Zaten ekli olanları çıkar
+                    }
+
+                    if (isAppendToTop) {
+                        // Yukarıya ekle
+                        tvShowList.addAll(0, newTVShows)
+                    } else {
+                        // Aşağıya ekle
+                        tvShowList.addAll(newTVShows)
+                    }
+                    adapter.notifyDataSetChanged() // Listeyi güncelle
+                }
+            }
+
+            override fun onFailure(call: Call<TVShowResponse>, t: Throwable) {
+                t.printStackTrace()
+            }
+        })
+    }
 }
