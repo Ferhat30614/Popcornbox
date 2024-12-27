@@ -7,37 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     tools:menu="@menu/bottom_nav_tasarim"
-    tools:openDrawer="start">
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Toolbar -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:backgroundTint="#FF5722"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- BottomNavigationView -->
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNav"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:menu="@menu/bottom_nav_tasarim" />
 
-        <!-- NavHostFragment -->
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/navigation_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
@@ -50,16 +27,45 @@
             app:layout_constraintTop_toBottomOf="@id/bottomNav"
             app:navGraph="@navigation/activitymainnav" />
 
-        <!-- Yeni FragmentContainerView -->
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/secondary_fragment_containeri"
-            android:name="androidx.fragment.app.Fragment"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/navigation_host_fragment"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:backgroundTint="#FF5722"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNav"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:menu="@menu/bottom_nav_tasarim" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/specialToolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#E72020"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="?attr/homeAsUpIndicator" />
+
+        <!-- Yeni FragmentContainerView -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -71,3 +77,5 @@
         app:menu="@menu/nav_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
+
+

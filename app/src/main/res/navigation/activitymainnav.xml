@@ -15,6 +15,15 @@
         android:id="@+id/filmlerFragment"
         android:name="com.example.poppcornapplicationnew.FilmlerFragment"
         android:label="fragment_filmler"
-        tools:layout="@layout/fragment_filmler" />
+        tools:layout="@layout/fragment_filmler" >
+        <action
+            android:id="@+id/actionfilmdetaya"
+            app:destination="@id/movieDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetails"
+        android:name="com.example.poppcornapplicationnew.MovieDetails"
+        android:label="fragment_movie_details"
+        tools:layout="@layout/fragment_movie_details" />
 
 </navigation>
