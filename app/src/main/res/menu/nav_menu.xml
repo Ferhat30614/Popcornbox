@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/birinciFragment"
-        android:title="Birinci" />
+        android:id="@+id/filmlerFragment"
+        android:title="Filmler" />
     <item
-        android:id="@+id/ikinciFragment"
-        android:title="İkinci" />
+        android:id="@+id/dizilerFragment"
+        android:title="Diziler" />
 </menu>

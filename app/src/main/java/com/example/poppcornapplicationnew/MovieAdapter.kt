@@ -56,9 +56,6 @@ class MovieAdapter (private val mcontext:Context,private val  movieArraylist:Lis
         holder.Card.setOnClickListener(){
 
 
-            val action=FilmlerFragmentDirections.actionfilmdendetaya(nesnem)
-            Navigation.findNavController(holder.textViewFilmAd).navigate(action)
-
 
 
 
