@@ -19,12 +19,10 @@ class MovieAdapter (private val mcontext:Context,private val  movieArraylist:Lis
 
         var Card:CardView
         var imageViewFilm:ImageView
-        var textViewFilmAd:TextView
 
         init {
             Card=layout.findViewById(R.id.Card)
             imageViewFilm=layout.findViewById(R.id.imageViewFilm)
-            textViewFilmAd=layout.findViewById(R.id.textViewFilmAd)
         }
 
     }
@@ -42,7 +40,6 @@ class MovieAdapter (private val mcontext:Context,private val  movieArraylist:Lis
     override fun onBindViewHolder(holder: NesneTutucu, position: Int) {
 
         val nesnem=movieArraylist[position]
-        holder.textViewFilmAd.text=nesnem.title
 
 
         if (nesnem.posterPath!=null)

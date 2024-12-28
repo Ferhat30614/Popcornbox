@@ -2,12 +2,14 @@
 
 package com.example.poppcornapplicationnew
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -55,6 +57,11 @@ class MainActivity : AppCompatActivity() {
                     binding.toolbar.visibility=View.GONE
                     binding.bottomNav.visibility=View.GONE
                     binding.specialToolbar.visibility=View.VISIBLE
+                    //binding.specialToolbar.setBackgroundColor(ContextCompat.getColor(this,R.color.blue))
+                    binding.toolbar.background = ColorDrawable(ContextCompat.getColor(this, R.color.blue))
+
+
+
 
                     Log.e("SpecialToolbar", "55555555")
                 }

@@ -18,7 +18,6 @@ class TVShowAdapter(
     inner class NesneTutucu(layout: View) : RecyclerView.ViewHolder(layout) {
         var card: CardView = layout.findViewById(R.id.Card)
         var imageViewFilm: ImageView = layout.findViewById(R.id.imageViewFilm)
-        var textViewFilmAd: TextView = layout.findViewById(R.id.textViewFilmAd)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NesneTutucu {
@@ -32,7 +31,6 @@ class TVShowAdapter(
 
     override fun onBindViewHolder(holder: NesneTutucu, position: Int) {
         val nesnem = tvShowArrayList[position]
-        holder.textViewFilmAd.text = nesnem.name
 
         if (nesnem.posterPath != null) {
             Picasso.get().load("https://image.tmdb.org/t/p/w500${nesnem.posterPath}")
