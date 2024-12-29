@@ -34,7 +34,6 @@ class MovieDetails : Fragment() {
     fun getir(){
 
 
-/*
         val s=ObjectAnimator.ofFloat(binding.Card,"translationY",0.0f,2800.0f).apply {
             duration=2000
         }
@@ -47,7 +46,7 @@ class MovieDetails : Fragment() {
         y.start()
 
 
-*/
+
 
 
 
