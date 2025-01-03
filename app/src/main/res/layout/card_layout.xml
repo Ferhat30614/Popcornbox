@@ -10,7 +10,7 @@
         android:id="@+id/Card"
         android:layout_width="140dp"
         android:layout_height="170dp"
-        android:backgroundTint="@color/black">
+        android:backgroundTint="@color/blue">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
