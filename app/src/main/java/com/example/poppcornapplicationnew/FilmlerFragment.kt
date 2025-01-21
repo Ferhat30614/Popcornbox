@@ -83,9 +83,6 @@ class FilmlerFragment : Fragment() {
 
                     val yenilist=response.body().results
 
-
-
-
                     val newList=yenilist.filter { movie: Movie ->
                         !list.any { it.id==movie.id }
                     }

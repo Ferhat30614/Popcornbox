@@ -24,6 +24,10 @@
         android:id="@+id/movieDetails"
         android:name="com.example.poppcornapplicationnew.MovieDetails"
         android:label="fragment_movie_details"
-        tools:layout="@layout/fragment_movie_details" />
+        tools:layout="@layout/fragment_movie_details" >
+        <argument
+            android:name="MyMovie"
+            app:argType="com.example.poppcornapplicationnew.Movie" />
+    </fragment>
 
 </navigation>

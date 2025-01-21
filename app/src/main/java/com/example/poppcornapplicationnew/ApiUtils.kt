@@ -21,6 +21,15 @@ class ApiUtils {
         }
 
 
+        fun getTvDetailsDaoInterface():TvDetailsDaoInterface{
+            return RetrofitClient.getClient(BaseUrl).create(TvDetailsDaoInterface::class.java)
+
+        }
+
+        fun getMovieDetailsDaoInterface():MovieDetailsDaoInterface{
+            return RetrofitClient.getClient(BaseUrl).create(MovieDetailsDaoInterface::class.java)
+
+        }
 
 
 

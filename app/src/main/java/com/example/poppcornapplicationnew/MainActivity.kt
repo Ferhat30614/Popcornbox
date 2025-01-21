@@ -49,6 +49,16 @@ class MainActivity : AppCompatActivity() {
 
         textviewbaslik.text="Baslik"
 
+        binding.specialToolbar.setNavigationOnClickListener(){
+
+            onBackPressedDispatcher.onBackPressed()
+
+
+        }
+
+
+
+
         controller.addOnDestinationChangedListener{controller,destination,aaa->
 
             when(destination.id){
@@ -57,8 +67,8 @@ class MainActivity : AppCompatActivity() {
                     binding.toolbar.visibility=View.GONE
                     binding.bottomNav.visibility=View.GONE
                     binding.specialToolbar.visibility=View.VISIBLE
-                    //binding.specialToolbar.setBackgroundColor(ContextCompat.getColor(this,R.color.blue))
-                    binding.toolbar.background = ColorDrawable(ContextCompat.getColor(this, R.color.blue))
+                    binding.specialToolbar.setBackgroundColor(ContextCompat.getColor(this,R.color.Kırmızı))
+
 
 
 

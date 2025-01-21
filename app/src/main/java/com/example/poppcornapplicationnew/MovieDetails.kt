@@ -2,15 +2,22 @@ package com.example.poppcornapplicationnew
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.poppcornapplicationnew.databinding.FragmentDizilerBinding
+import androidx.navigation.fragment.navArgs
 import com.example.poppcornapplicationnew.databinding.FragmentMovieDetailsBinding
+import com.squareup.picasso.Picasso
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MovieDetails : Fragment() {
     private lateinit var binding: FragmentMovieDetailsBinding
+    private lateinit var mddi: MovieDetailsDaoInterface
+    private lateinit var yeniFilm: MediaDetails
 
 
     override fun onCreateView(
@@ -19,41 +26,48 @@ class MovieDetails : Fragment() {
     ): View? {
 
         binding=FragmentMovieDetailsBinding.inflate(inflater,container,false)
-        getir()
+
+        mddi=ApiUtils.getMovieDetailsDaoInterface()
 
 
+        val bundle:MovieDetailsArgs by navArgs()
+        val Movie=bundle.myMovie
+        getFilmlerDetails(Movie.id)
 
+
+        if (yeniFilm.backdrop_path!=null)
+        {
+            Picasso.get().load("https://image.tmdb.org/t/p/w500${yeniFilm.backdrop_path}")
+                .placeholder(R.drawable.yukleniyo)
+                .error(R.drawable.interstellar)
+                .into(binding.ivMoviePoster)
+        }
 
 
 
         return binding.root
     }
 
+    private fun getFilmlerDetails(id:Int){
 
 
-    fun getir(){
+        mddi.getMovieDetails(movieId = id).enqueue(object:Callback<MediaDetails>{
+            override fun onResponse(call: Call<MediaDetails>?, response: Response<MediaDetails>) {
 
-
-        val s=ObjectAnimator.ofFloat(binding.Card,"translationY",0.0f,2800.0f).apply {
-            duration=2000
-        }
-        s.start()
-
-
-        val y=ObjectAnimator.ofFloat(binding.Card,"scaleY",0.0f,1.0f).apply {
-            duration=2000
-        }
-        y.start()
+                if (response.body() != null) {
+                     yeniFilm=response.body()
 
 
 
+                }
 
 
+            }
 
-
-
-
-
+            override fun onFailure(call: Call<MediaDetails>?, t: Throwable?) {
+                TODO("Not yet implemented")
+            }
+        })
 
 
     }
