@@ -74,20 +74,9 @@ class MainActivity : AppCompatActivity() {
                 }
 
 
-            }
+            }//sdcdc
 
         }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
