@@ -10,7 +10,7 @@ interface MovieDetailsDaoInterface {
 
     @GET("movie/{movie_id}")
     fun getMovieDetails(
-        @Query("movie_id") movieId: Int,                      // Film ID'si (path parametresi)
+        @Path("movie_id") movieId: Int,                      // Film ID'si (path parametresi)
         @Query("api_key") apiKey: String = "2c9984115df49ec7e45fb618cdf7f728", // API anahtarı
         @Query("language") language: String = "tr-TR"        // Yanıt dili
     ): Call<MediaDetails> // Film detayları için model

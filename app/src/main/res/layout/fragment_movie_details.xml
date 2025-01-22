@@ -1,167 +1,40 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black"
-    android:padding="16dp">
+             android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="409dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/viewPager2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Film Posteri -->
-        <ImageView
-            android:id="@+id/ivMoviePoster"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:scaleType="centerCrop"
-            android:contentDescription="Film Posteri"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Hakkında -->
-        <TextView
-            android:id="@+id/tvOverview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Gladyatör Maximus Decimus Meridius’un ölümünden 15 yıl sonrasıdır..."
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:lineSpacingExtra="4dp"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Türler -->
-        <TextView
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tür:"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
+            android:text="Monday" />
 
-        <!-- Film Bilgisi -->
-        <TextView
-            android:layout_width="match_parent"
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Film Bilgisi"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginBottom="8dp" />
+            android:text="Tuesday" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="16dp">
+    </com.google.android.material.tabs.TabLayout>
 
-            <!-- Çıkış Tarihi -->
-            <TextView
-                android:id="@+id/tvReleaseDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Çıkış Tarihi: 2024-11-05"
-                android:textColor="@color/gray"
-                android:layout_marginBottom="4dp" />
-
-            <!-- Orijinal İsmi -->
-            <TextView
-                android:id="@+id/tvOriginalTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Orijinal İsmi: Gladiator II"
-                android:textColor="@color/gray"
-                android:layout_marginBottom="4dp" />
-
-            <!-- Durumu -->
-            <TextView
-                android:id="@+id/tvStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Durumu: Released"
-                android:textColor="@color/gray"
-                android:layout_marginBottom="4dp" />
-
-            <!-- Süresi -->
-            <TextView
-                android:id="@+id/tvRuntime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Süresi: 148 dakika"
-                android:textColor="@color/gray"
-                android:layout_marginBottom="4dp" />
-
-            <!-- Orijinal Dili -->
-            <TextView
-                android:id="@+id/tvOriginalLanguage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Orijinal Dili: en"
-                android:textColor="@color/gray"
-                android:layout_marginBottom="4dp" />
-
-            <!-- Yapımcı Ülke -->
-            <TextView
-                android:id="@+id/tvProductionCountry"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Yapımcı Ülke: United States of America"
-                android:textColor="@color/gray"
-                android:layout_marginBottom="4dp" />
-
-            <!-- Şirketler -->
-            <TextView
-                android:id="@+id/tvProductionCompanies"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Şirketler: Paramount Pictures, Scott Free Productions..."
-                android:textColor="@color/gray"
-                android:layout_marginBottom="4dp" />
-
-            <!-- Bütçe -->
-            <TextView
-                android:id="@+id/tvBudget"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Bütçesi: $310 milyon"
-                android:textColor="@color/gray"
-                android:layout_marginBottom="4dp" />
-
-            <!-- Hasılat -->
-            <TextView
-                android:id="@+id/tvRevenue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Hasılatı: $458 milyon"
-                android:textColor="@color/gray"
-                android:layout_marginBottom="4dp" />
-
-            <!-- Tagline -->
-            <TextView
-                android:id="@+id/tvTagline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tagline: Eğlenmeye hazır olun."
-                android:textColor="@color/gray"
-                android:layout_marginBottom="4dp" />
-
-            <!-- Puan -->
-            <TextView
-                android:id="@+id/tvVoteAverage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Puan Ortalaması: 6.8"
-                android:textColor="@color/gray"
-                android:layout_marginBottom="4dp" />
-
-            <!-- Oy Sayısı -->
-            <TextView
-                android:id="@+id/tvVoteCount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Oy Sayısı: 2423"
-                android:textColor="@color/gray" />
-        </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>
