@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.navArgs
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.poppcornapplicationnew.databinding.FragmentMovieDetailsBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 
 class MovieDetails : Fragment() {
@@ -22,30 +25,40 @@ class MovieDetails : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding=FragmentMovieDetailsBinding.inflate(inflater,container,false)
-        val bundle:MovieDetailsArgs by navArgs()
-        val Movie=bundle.myMovie
-
-        fragmentListesi.add(FragmentFilmDetaylar())
-        fragmentListesi.add(FragmentBenzerler())
+        binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
+        val bundle: MovieDetailsArgs by navArgs()
+        val Movie = bundle.myMovie
 
 
-        val adapter = MyViewPagerAdapter(this)
-        viewpager2.adapter = adapter
 
-        fragmentBaslikListesi.add("Bir")
-        fragmentBaslikListesi.add("İki")
-        fragmentBaslikListesi.add("Üç")
+        // Fragmentlere Movie nesnesini gönder
+        val fragmentFilmDetaylar = FragmentFilmDetaylar().apply {
+            arguments = Bundle().apply {
+                putParcelable("movie", Movie) // Movie nesnesini Bundle'a koy
+            }
+        }
 
-        TabLayoutMediator(tablayout,viewpager2){tab, position ->
+        val fragmentBenzerler = FragmentBenzerler().apply {
+            arguments = Bundle().apply {
+                putParcelable("movie", Movie) // Movie nesnesini Bundle'a koy
+            }
+        }
+
+
+        fragmentListesi.add(fragmentFilmDetaylar)
+        fragmentListesi.add(fragmentBenzerler)
+
+
+        val adapter = MyViewPagerAdapter(requireActivity())
+        binding.viewPager23.adapter = adapter
+
+        fragmentBaslikListesi.add("Hakkında")
+        fragmentBaslikListesi.add("Benzerler")
+
+
+        TabLayoutMediator(binding.tabLayout, binding.viewPager23) { tab, position ->
             tab.setText(fragmentBaslikListesi[position])
         }.attach()
-
-
-
-
-
-
 
 
 
@@ -54,7 +67,7 @@ class MovieDetails : Fragment() {
     }
 
 
-    inner class MyViewPagerAdapter(fragmentActivity: FragmentActivity):FragmentStateAdapter(fragmentActivity){
+    inner class MyViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
         override fun getItemCount(): Int {
             return fragmentListesi.size
         }
@@ -64,13 +77,4 @@ class MovieDetails : Fragment() {
         }
 
     }
-
-
-
-
-
-
-
-
-
 }

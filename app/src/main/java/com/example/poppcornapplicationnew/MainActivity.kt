@@ -67,7 +67,8 @@ class MainActivity : AppCompatActivity() {
                     binding.toolbar.visibility=View.GONE
                     binding.bottomNav.visibility=View.GONE
                     binding.specialToolbar.visibility=View.VISIBLE
-                    binding.specialToolbar.setBackgroundColor(ContextCompat.getColor(this,R.color.Kırmızı))
+                    binding.specialToolbar.setBackgroundColor(ContextCompat.getColor(this,R.color.gray))
+                    binding.specialToolbar.title="Film adı"
 
 
 
