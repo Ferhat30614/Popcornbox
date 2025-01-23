@@ -7,4 +7,13 @@
     <color name="Kırmızı">#FB0E0E</color>
     <color name="gray">#FFEB3B</color>
 
+
+
+
+    <!-- colors.xml -->
+    <color name="toolbarColor">#FF6F00</color>
+    <color name="navigationBottomColor">#212121</color>
+    <color name="statusBarColor">#E65100</color>
+
+
 </resources>

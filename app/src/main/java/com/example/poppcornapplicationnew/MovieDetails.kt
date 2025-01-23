@@ -47,6 +47,8 @@ class MovieDetails : Fragment() {
 
         fragmentListesi.add(fragmentFilmDetaylar)
         fragmentListesi.add(fragmentBenzerler)
+        fragmentListesi.add(OnerilenlerFragment())
+
 
 
         val adapter = MyViewPagerAdapter(requireActivity())
@@ -54,6 +56,7 @@ class MovieDetails : Fragment() {
 
         fragmentBaslikListesi.add("Hakkında")
         fragmentBaslikListesi.add("Benzerler")
+        fragmentBaslikListesi.add("Önerilenler")
 
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager23) { tab, position ->

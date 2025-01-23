@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:menu="@menu/bottom_nav_tasarim"
-    >
+    tools:menu="@menu/bottom_nav_tasarim">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,7 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
-            android:backgroundTint="#FF5722"
+            android:backgroundTint="@color/toolbarColor"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,6 +43,7 @@
             android:id="@+id/bottomNav"
             android:layout_width="0dp"
             android:layout_height="50dp"
+            android:background="@color/navigationBottomColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
