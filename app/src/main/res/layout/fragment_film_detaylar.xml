@@ -17,7 +17,6 @@
             android:layout_height="300dp"
             android:scaleType="centerCrop"
             android:contentDescription="Film Posteri"
-
             android:layout_marginBottom="16dp" />
 
         <!-- Hakkında -->
@@ -31,7 +30,7 @@
             android:lineSpacingExtra="4dp"
             android:layout_marginBottom="16dp" />
 
-        <!-- Türler -->
+        <!-- Türler Başlığı -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,6 +38,14 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
+
+        <!-- Türlerin Gösterileceği Alan -->
+        <TextView
+            android:id="@+id/tvGenres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:layout_marginBottom="16dp" />
 
         <!-- Film Bilgisi -->
         <TextView
@@ -166,5 +173,3 @@
 
     </LinearLayout>
 </ScrollView>
-
-
