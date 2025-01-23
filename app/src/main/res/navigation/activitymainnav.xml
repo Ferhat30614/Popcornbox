@@ -9,7 +9,11 @@
         android:id="@+id/dizilerFragment"
         android:name="com.example.poppcornapplicationnew.DizilerFragment"
         android:label="fragment_diziler"
-        tools:layout="@layout/fragment_diziler" />
+        tools:layout="@layout/fragment_diziler" >
+        <action
+            android:id="@+id/action_dizidetaya"
+            app:destination="@id/diziDetails" />
+    </fragment>
 
     <fragment
         android:id="@+id/filmlerFragment"
@@ -28,6 +32,15 @@
         <argument
             android:name="MyMovie"
             app:argType="com.example.poppcornapplicationnew.Movie" />
+    </fragment>
+    <fragment
+        android:id="@+id/diziDetails"
+        android:name="com.example.poppcornapplicationnew.DiziDetails"
+        android:label="fragment_dizi_details"
+        tools:layout="@layout/fragment_dizi_details" >
+        <argument
+            android:name="dizi"
+            app:argType="com.example.poppcornapplicationnew.TVShow" />
     </fragment>
 
 </navigation>

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
@@ -40,6 +41,9 @@ class TVShowAdapter(
         }
 
         holder.card.setOnClickListener {
+
+            val action=DizilerFragmentDirections.actionDizidetaya(nesnem)
+            Navigation.findNavController(holder.imageViewFilm).navigate(action)
 
         }
     }
