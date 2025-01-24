@@ -1,5 +1,6 @@
 package com.example.poppcornapplicationnew
 
+import MediaDetails
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater

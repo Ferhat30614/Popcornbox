@@ -31,6 +31,8 @@ class MovieDetails : Fragment() {
 
 
 
+
+
         // Fragmentlere Movie nesnesini gönder
         val fragmentFilmDetaylar = FragmentFilmDetaylar().apply {
             arguments = Bundle().apply {

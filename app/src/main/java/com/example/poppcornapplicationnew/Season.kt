@@ -31,7 +31,15 @@ data class Season(
     @Expose
     val posterPath: String?,
 
+    @SerializedName("vote_average")
+    @Expose
+    val vote_average: Double?,//ekelnmemişti
+
     @SerializedName("season_number")
     @Expose
     val seasonNumber: Int?
+
+
+
+
 ) : Parcelable

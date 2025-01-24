@@ -70,6 +70,14 @@ class MainActivity : AppCompatActivity() {
                     binding.specialToolbar.title = "Film adı"
                     Log.e("SpecialToolbar", "55555555")
                 }
+                R.id.TVShowDetails -> {
+                    binding.toolbar.visibility = View.GONE
+                    binding.bottomNav.visibility = View.GONE
+                    binding.specialToolbar.visibility = View.VISIBLE
+                    binding.specialToolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
+                    binding.specialToolbar.title = "Film adı"
+                    Log.e("SpecialToolbar", "55555555")
+                }
                 else -> {
                     binding.toolbar.visibility = View.VISIBLE
                     binding.bottomNav.visibility = View.VISIBLE

@@ -1,20 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DiziDetails">
+    android:background="@color/black"
+    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dizi Details"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical">
+
+        <!-- Dizi Posteri -->
+        <ImageView
+            android:id="@+id/ivDiziPoster"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Dizi Posteri"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Hakkında -->
+        <TextView
+            android:id="@+id/tvOverview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dizi hakkında bilgiler buraya gelecek..."
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Türler Başlığı -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tür:"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Türlerin Gösterileceği Alan -->
+        <TextView
+            android:id="@+id/tvGenres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Dizi Bilgisi -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dizi Bilgisi"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <!-- İlk Yayın Tarihi -->
+            <TextView
+                android:id="@+id/tvFirstAirDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="İlk Yayın Tarihi: 2011-04-17"
+                android:textColor="@color/gray"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Orijinal İsmi -->
+            <TextView
+                android:id="@+id/tvOriginalName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Orijinal İsmi: Game of Thrones"
+                android:textColor="@color/gray"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Durumu -->
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Durumu: Yayında Değil"
+                android:textColor="@color/gray"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Bölüm Süresi -->
+            <TextView
+                android:id="@+id/tvEpisodeRuntime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bölüm Süresi: 60 dakika"
+                android:textColor="@color/gray"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Orijinal Dili -->
+            <TextView
+                android:id="@+id/tvOriginalLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Orijinal Dili: en"
+                android:textColor="@color/gray"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Yapımcı Ülke -->
+            <TextView
+                android:id="@+id/tvProductionCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Yapımcı Ülke: United States"
+                android:textColor="@color/gray"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Yayıncı Ağlar -->
+            <TextView
+                android:id="@+id/tvNetworks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Yayıncı Ağ: HBO"
+                android:textColor="@color/gray"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Sezon ve Bölüm Bilgisi -->
+            <TextView
+                android:id="@+id/tvSeasons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sezon Sayısı: 8"
+                android:textColor="@color/gray"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/tvEpisodes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bölüm Sayısı: 73"
+                android:textColor="@color/gray"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Puan -->
+            <TextView
+                android:id="@+id/tvVoteAverage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Puan Ortalaması: 8.4"
+                android:textColor="@color/gray"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Oy Sayısı -->
+            <TextView
+                android:id="@+id/tvVoteCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Oy Sayısı: 24462"
+                android:textColor="@color/gray" />
+
+            <!-- Tagline -->
+            <TextView
+                android:id="@+id/tvTagline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tagline: Winter is Coming"
+                android:textColor="@color/gray"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
