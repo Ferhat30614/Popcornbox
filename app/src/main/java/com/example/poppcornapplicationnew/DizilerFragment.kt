@@ -70,14 +70,6 @@ class DizilerFragment : Fragment() {
         })
 
 
-
-
-
-
-
-
-
-
         return binding.root
     }
 
