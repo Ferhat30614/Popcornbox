@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.poppcornapplicationnew.databinding.FragmentBenzerDizilerBinding
+import com.example.poppcornapplicationnew.databinding.FragmentDizilerBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class FragmentBenzerDiziler : Fragment() {
-    private lateinit var binding: FragmentBenzerDizilerBinding
+    private lateinit var binding: FragmentDizilerBinding
     private lateinit var adapter: TVShowAdapter
     private lateinit var gtsi: TVShowDaoInterface
 
@@ -31,22 +31,22 @@ class FragmentBenzerDiziler : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentBenzerDizilerBinding.inflate(inflater, container, false)
+        binding = FragmentDizilerBinding.inflate(inflater, container, false)
 
-        binding.rv.setHasFixedSize(true)
-        binding.rv.layoutManager = GridLayoutManager(requireContext(), 3)
+        binding.rvTVShow.setHasFixedSize(true)
+        binding.rvTVShow.layoutManager = GridLayoutManager(requireContext(), 3)
 
         list=ArrayList()
         adapter=TVShowAdapter(requireContext(),list)
 
-        binding.rv.adapter = adapter
+        binding.rvTVShow.adapter = adapter
 
         gtsi = ApiUtils.getTVDaoInterface()
 
         getDiziler(currenPage)
 
 
-        binding.rv.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+        binding.rvTVShow.addOnScrollListener(object :RecyclerView.OnScrollListener(){
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -73,18 +73,11 @@ class FragmentBenzerDiziler : Fragment() {
         })
 
 
-
-
-
-
-
-
-
-
         return binding.root
-
-
     }
+
+
+
     private fun getDiziler(page: Int) {
         isLoading=true
         gtsi.getTvShow(page = page).enqueue(object : Callback<TVShowResponse> {
@@ -99,13 +92,7 @@ class FragmentBenzerDiziler : Fragment() {
                         !list.any{it.id==tvShow.id}
                     }
 
-                    val actionseries=filterliListim.filter { tvShow ->
-                        tvShow.genreIds.contains(28)
-                    }
-
-
-
-                    list.addAll(actionseries)
+                    list.addAll(filterliListim)
 
                 }
                 Log.e("liste boyutu",list.size.toString())
