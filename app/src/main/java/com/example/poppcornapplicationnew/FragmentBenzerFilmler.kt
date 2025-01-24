@@ -8,12 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.poppcornapplicationnew.databinding.FragmentBenzerlerBinding
+import com.example.poppcornapplicationnew.databinding.FragmentBenzerFilmlerBinding
 import retrofit2.Callback
 import retrofit2.Response
 
-class FragmentBenzerler : Fragment() {
-    private lateinit var binding: FragmentBenzerlerBinding
+class FragmentBenzerFilmler : Fragment() {
+    private lateinit var binding: FragmentBenzerFilmlerBinding
     private lateinit var adapter: MovieAdapter
     private lateinit var gmdi: MovieDaoInterface
     private lateinit var list: ArrayList<Movie>
@@ -26,7 +26,8 @@ class FragmentBenzerler : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {binding = FragmentBenzerlerBinding.inflate(inflater, container, false)
+    ): View? {
+        binding = FragmentBenzerFilmlerBinding.inflate(inflater, container, false)
 
         binding.rv.setHasFixedSize(true)
         binding.rv.layoutManager = GridLayoutManager(requireContext(), 3)

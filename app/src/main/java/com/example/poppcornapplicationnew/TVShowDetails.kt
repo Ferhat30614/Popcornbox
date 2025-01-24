@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.poppcornapplicationnew.databinding.FragmentDizilerBinding
-import com.example.poppcornapplicationnew.databinding.FragmentMovieDetailsBinding
 import com.example.poppcornapplicationnew.databinding.FragmentTvShowDetailsBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -44,7 +42,7 @@ class TVShowDetails : Fragment() {
             }
         }
 
-        val fragmentBenzerler = FragmentBenzerler().apply {
+        val fragmentBenzerFilmler = FragmentBenzerFilmler().apply {
             arguments = Bundle().apply {
                 putParcelable("dizi", TVShow) // Movie nesnesini Bundle'a koy
             }
@@ -52,8 +50,8 @@ class TVShowDetails : Fragment() {
 
 
         fragmentListesi.add(DiziDetails)
-        fragmentListesi.add(fragmentBenzerler)
-        fragmentListesi.add(OnerilenlerFragment())
+        fragmentListesi.add(FragmentBenzerDiziler())
+        fragmentListesi.add(OnerilenDizilerFragment())
 
 
 

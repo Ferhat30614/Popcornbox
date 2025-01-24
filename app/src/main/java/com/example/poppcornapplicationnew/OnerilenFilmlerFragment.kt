@@ -8,15 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.poppcornapplicationnew.databinding.FragmentFilmlerBinding
-import com.example.poppcornapplicationnew.databinding.FragmentOnerilenlerBinding
+import com.example.poppcornapplicationnew.databinding.FragmentOnerilenFilmlerBinding
 import retrofit2.Callback
 import retrofit2.Response
 
-class OnerilenlerFragment : Fragment() {
+class OnerilenFilmlerFragment : Fragment() {
 
 
-    private lateinit var binding: FragmentOnerilenlerBinding
+    private lateinit var binding: FragmentOnerilenFilmlerBinding
     private lateinit var adapter: MovieAdapter
     private lateinit var gmdi: MovieDaoInterface
     private lateinit var list:ArrayList<Movie>
@@ -35,7 +34,7 @@ class OnerilenlerFragment : Fragment() {
 
 
 
-        binding = FragmentOnerilenlerBinding.inflate(inflater,container,false)
+        binding = FragmentOnerilenFilmlerBinding.inflate(inflater,container,false)
 
         binding.rv.setHasFixedSize(true)
         binding.rv.layoutManager = GridLayoutManager(requireContext(), 3)
