@@ -1,12 +1,13 @@
 package com.example.poppcornapplicationnew
 
-import MediaDetails
+import com.example.poppcornapplicationnew.Entities.MediaDetailResponse.MediaDetailResponse
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.poppcornapplicationnew.Entities.MovieResponse.Movie
 import com.example.poppcornapplicationnew.databinding.FragmentFilmDetaylarBinding
 import com.squareup.picasso.Picasso
 import retrofit2.Call
@@ -16,7 +17,7 @@ import retrofit2.Response
 class FragmentFilmDetaylar : Fragment() {
     private lateinit var binding: FragmentFilmDetaylarBinding
     private lateinit var mddi: MovieDetailsDaoInterface
-    private var yeniFilm: MediaDetails? = null
+    private var yeniFilm: MediaDetailResponse? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +37,8 @@ class FragmentFilmDetaylar : Fragment() {
     }
 
     private fun getFilmlerDetails(id: Int) {
-        mddi.getMovieDetails(movieId = id).enqueue(object : Callback<MediaDetails> {
-            override fun onResponse(call: Call<MediaDetails>, response: Response<MediaDetails>) {
+        mddi.getMovieDetails(movieId = id).enqueue(object : Callback<MediaDetailResponse> {
+            override fun onResponse(call: Call<MediaDetailResponse>, response: Response<MediaDetailResponse>) {
                 if (response.body() != null) {
                     yeniFilm = response.body()
 
@@ -100,7 +101,7 @@ class FragmentFilmDetaylar : Fragment() {
                 }
             }
 
-            override fun onFailure(call: Call<MediaDetails>, t: Throwable) {
+            override fun onFailure(call: Call<MediaDetailResponse>, t: Throwable) {
                 Log.e("Hata", t.message.toString())
             }
         })

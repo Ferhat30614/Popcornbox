@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.poppcornapplicationnew.Adapter.MovieAdapter
+import com.example.poppcornapplicationnew.Entities.MovieResponse.Movie
+import com.example.poppcornapplicationnew.Entities.MovieResponse.MovieResponse
 import com.example.poppcornapplicationnew.databinding.FragmentOnerilenFilmlerBinding
 import retrofit2.Callback
 import retrofit2.Response
@@ -85,7 +88,7 @@ class OnerilenFilmlerFragment : Fragment() {
     private fun getFilmler(page: Int, yukaridenEkleme:Boolean=false) {
         isLoading=true
         gmdi.getMovie(page = page).enqueue(object : Callback<MovieResponse> {
-            override fun onResponse(call: retrofit2.Call<MovieResponse> ,response: Response<MovieResponse>) {
+            override fun onResponse(call: retrofit2.Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.body() != null) {
 
 

@@ -1,15 +1,12 @@
+package com.example.poppcornapplicationnew.Entities.MediaDetailResponse
+
 import android.os.Parcelable
-import com.example.poppcornapplicationnew.BelongsToCollection
-import com.example.poppcornapplicationnew.Genre
-import com.example.poppcornapplicationnew.ProductionCompany
-import com.example.poppcornapplicationnew.ProductionCountry
-import com.example.poppcornapplicationnew.Season
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class MediaDetails(
+data class MediaDetailResponse(
     @SerializedName("adult")
     @Expose
     val adult: Boolean?,                      // İçerik yetişkinlere uygun mu?

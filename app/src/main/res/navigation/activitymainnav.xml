@@ -31,7 +31,7 @@
         tools:layout="@layout/fragment_movie_details" >
         <argument
             android:name="MyMovie"
-            app:argType="com.example.poppcornapplicationnew.Movie" />
+            app:argType="com.example.poppcornapplicationnew.Entities.MovieResponse.Movie" />
     </fragment>
     <fragment
         android:id="@+id/TVShowDetails"
@@ -40,7 +40,7 @@
         tools:layout="@layout/fragment_tv_show_details" >
         <argument
             android:name="mydizi"
-            app:argType="com.example.poppcornapplicationnew.TVShow" />
+            app:argType="com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShow" />
     </fragment>
 
 </navigation>

@@ -1,3 +1,5 @@
+package com.example.poppcornapplicationnew.Entities.MediaDetailResponse
+
 import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

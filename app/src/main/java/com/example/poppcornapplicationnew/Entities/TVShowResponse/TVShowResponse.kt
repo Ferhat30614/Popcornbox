@@ -1,4 +1,4 @@
-package com.example.poppcornapplicationnew
+package com.example.poppcornapplicationnew.Entities.TVShowResponse
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

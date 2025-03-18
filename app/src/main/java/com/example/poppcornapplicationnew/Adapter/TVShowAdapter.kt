@@ -1,14 +1,16 @@
-package com.example.poppcornapplicationnew
+package com.example.poppcornapplicationnew.Adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.poppcornapplicationnew.DizilerFragmentDirections
+import com.example.poppcornapplicationnew.R
+import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShow
 import com.squareup.picasso.Picasso
 
 class TVShowAdapter(
@@ -42,7 +44,7 @@ class TVShowAdapter(
 
         holder.card.setOnClickListener {
 
-            val action=DizilerFragmentDirections.actiontvshowdetaya(nesnem)
+            val action= DizilerFragmentDirections.actiontvshowdetaya(nesnem)
             Navigation.findNavController(holder.imageViewFilm).navigate(action)
 
         }

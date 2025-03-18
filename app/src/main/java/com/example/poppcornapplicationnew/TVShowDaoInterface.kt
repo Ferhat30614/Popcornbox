@@ -1,5 +1,6 @@
 package com.example.poppcornapplicationnew
 
+import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShowResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

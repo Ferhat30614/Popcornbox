@@ -1,25 +1,25 @@
-package com.example.poppcornapplicationnew
+package com.example.poppcornapplicationnew.Entities.MediaDetailResponse
 
 import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
+import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class BelongsToCollection(
-    @SerializedName("backdrop_path")
-    @Expose
-    val backdropPath: String?,
-
+data class Network(
     @SerializedName("id")
     @Expose
     val id: Int?,
+
+    @SerializedName("logo_path")
+    @Expose
+    val logoPath: String?,
 
     @SerializedName("name")
     @Expose
     val name: String?,
 
-    @SerializedName("poster_path")
+    @SerializedName("origin_country")
     @Expose
-    val posterPath: String?
+    val originCountry: String?
 ) : Parcelable

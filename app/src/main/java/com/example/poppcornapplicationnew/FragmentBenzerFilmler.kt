@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.poppcornapplicationnew.Adapter.MovieAdapter
+import com.example.poppcornapplicationnew.Entities.MovieResponse.Movie
+import com.example.poppcornapplicationnew.Entities.MovieResponse.MovieResponse
 import com.example.poppcornapplicationnew.databinding.FragmentBenzerFilmlerBinding
 import retrofit2.Callback
 import retrofit2.Response

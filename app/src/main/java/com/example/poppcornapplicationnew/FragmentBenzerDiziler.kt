@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.poppcornapplicationnew.Adapter.TVShowAdapter
+import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShow
+import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShowResponse
 import com.example.poppcornapplicationnew.databinding.FragmentBenzerDizilerBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,7 +40,7 @@ class FragmentBenzerDiziler : Fragment() {
         binding.rv.layoutManager = GridLayoutManager(requireContext(), 3)
 
         list=ArrayList()
-        adapter=TVShowAdapter(requireContext(),list)
+        adapter= TVShowAdapter(requireContext(),list)
 
         binding.rv.adapter = adapter
 

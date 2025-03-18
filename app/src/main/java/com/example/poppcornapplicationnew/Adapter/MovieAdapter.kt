@@ -1,14 +1,16 @@
-package com.example.poppcornapplicationnew
+package com.example.poppcornapplicationnew.Adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.poppcornapplicationnew.FilmlerFragmentDirections
+import com.example.poppcornapplicationnew.Entities.MovieResponse.Movie
+import com.example.poppcornapplicationnew.R
 import com.squareup.picasso.Picasso
 
 class MovieAdapter (private val mcontext:Context,private val  movieArraylist:List<Movie>):RecyclerView.Adapter<MovieAdapter.NesneTutucu>() {
@@ -52,7 +54,7 @@ class MovieAdapter (private val mcontext:Context,private val  movieArraylist:Lis
 
         holder.Card.setOnClickListener(){
 
-            val action=FilmlerFragmentDirections.actionfilmdetaya(nesnem)
+            val action= FilmlerFragmentDirections.actionfilmdetaya(nesnem)
             Navigation.findNavController(holder.imageViewFilm).navigate(action)
 
 

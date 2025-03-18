@@ -1,12 +1,13 @@
 package com.example.poppcornapplicationnew
 
-import MediaDetails
+import com.example.poppcornapplicationnew.Entities.MediaDetailResponse.MediaDetailResponse
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShow
 import com.example.poppcornapplicationnew.databinding.FragmentDiziDetailsBinding
 import com.squareup.picasso.Picasso
 import retrofit2.Call
@@ -16,7 +17,7 @@ import retrofit2.Response
 class DiziDetails : Fragment() {
     private lateinit var binding: FragmentDiziDetailsBinding
     private lateinit var tvDetailsDaoInterface: TvDetailsDaoInterface
-    private var diziDetay: MediaDetails? = null
+    private var diziDetay: MediaDetailResponse? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,8 +39,8 @@ class DiziDetails : Fragment() {
     }
 
     private fun getDiziDetails(id: Int) {
-        tvDetailsDaoInterface.getTvShowDetails(tvId = id).enqueue(object : Callback<MediaDetails> {
-            override fun onResponse(call: Call<MediaDetails>, response: Response<MediaDetails>) {
+        tvDetailsDaoInterface.getTvShowDetails(tvId = id).enqueue(object : Callback<MediaDetailResponse> {
+            override fun onResponse(call: Call<MediaDetailResponse>, response: Response<MediaDetailResponse>) {
                 if (response.body() != null) {
                     diziDetay = response.body()
 
@@ -101,7 +102,7 @@ class DiziDetails : Fragment() {
                 }
             }
 
-            override fun onFailure(call: Call<MediaDetails>, t: Throwable) {
+            override fun onFailure(call: Call<MediaDetailResponse>, t: Throwable) {
                 Log.e("Hata", t.message.toString())
             }
         })
