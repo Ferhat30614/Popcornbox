@@ -1,4 +1,4 @@
-package com.example.poppcornapplicationnew
+package com.example.poppcornapplicationnew.Activities
 
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.example.poppcornapplicationnew.R
 import com.example.poppcornapplicationnew.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -66,7 +67,9 @@ class MainActivity : AppCompatActivity() {
                     binding.toolbar.visibility = View.GONE
                     binding.bottomNav.visibility = View.GONE
                     binding.specialToolbar.visibility = View.VISIBLE
-                    binding.specialToolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
+                    binding.specialToolbar.setBackgroundColor(ContextCompat.getColor(this,
+                        R.color.gray
+                    ))
                     binding.specialToolbar.title = "Film adı"
                     Log.e("SpecialToolbar", "55555555")
                 }
@@ -74,7 +77,9 @@ class MainActivity : AppCompatActivity() {
                     binding.toolbar.visibility = View.GONE
                     binding.bottomNav.visibility = View.GONE
                     binding.specialToolbar.visibility = View.VISIBLE
-                    binding.specialToolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
+                    binding.specialToolbar.setBackgroundColor(ContextCompat.getColor(this,
+                        R.color.gray
+                    ))
                     binding.specialToolbar.title = "Film adı"
                     Log.e("SpecialToolbar", "55555555")
                 }
