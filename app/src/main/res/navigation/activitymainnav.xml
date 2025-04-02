@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dizilerFragment"
-        android:name="com.example.poppcornapplicationnew.DizilerFragment"
+        android:name="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.DizilerFragment"
         android:label="fragment_diziler"
         tools:layout="@layout/fragment_diziler" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/filmlerFragment"
-        android:name="com.example.poppcornapplicationnew.FilmlerFragment"
+        android:name="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Filmler.FilmlerFragment"
         android:label="fragment_filmler"
         tools:layout="@layout/fragment_filmler" >
         <action
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/movieDetails"
-        android:name="com.example.poppcornapplicationnew.MovieDetails"
+        android:name="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Filmler.MovieDetails"
         android:label="fragment_movie_details"
         tools:layout="@layout/fragment_movie_details" >
         <argument
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/TVShowDetails"
-        android:name="com.example.poppcornapplicationnew.TVShowDetails"
+        android:name="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TVShowDetails"
         android:label="fragment_tv_show_details"
         tools:layout="@layout/fragment_tv_show_details" >
         <argument

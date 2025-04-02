@@ -1,4 +1,4 @@
-package com.example.poppcornapplicationnew
+package com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,15 +8,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.poppcornapplicationnew.databinding.FragmentMovieDetailsBinding
+import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.DiziDetails
+import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.FragmentBenzerDiziler
+import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.OnerilenDizilerFragment
+import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Filmler.TabYapilari.FragmentBenzerFilmler
+import com.example.poppcornapplicationnew.databinding.FragmentTvShowDetailsBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
 
-class MovieDetails : Fragment() {
-    private lateinit var binding: FragmentMovieDetailsBinding
+class TVShowDetails : Fragment() {
+    private lateinit var binding: FragmentTvShowDetailsBinding
     private val fragmentListesi = ArrayList<Fragment>()
     private val fragmentBaslikListesi = ArrayList<String>()
-
 
 
 
@@ -25,52 +28,53 @@ class MovieDetails : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
-        val bundle: MovieDetailsArgs by navArgs()
-        val Movie = bundle.myMovie
+        //FragmentMovieDetailsBinding.inflate(inflater, container, false)
+
+        binding = FragmentTvShowDetailsBinding.inflate(inflater,container,false)
+        val bundle: TVShowDetailsArgs by navArgs()
+        val TVShow = bundle.mydizi
+
 
 
 
 
 
         // Fragmentlere Movie nesnesini gönder
-        val fragmentFilmDetaylar = FragmentFilmDetaylar().apply {
+        val DiziDetails = DiziDetails().apply {
             arguments = Bundle().apply {
-                putParcelable("movie", Movie) // Movie nesnesini Bundle'a koy
+                putParcelable("dizi", TVShow) // Movie nesnesini Bundle'a koy
             }
         }
 
         val fragmentBenzerFilmler = FragmentBenzerFilmler().apply {
             arguments = Bundle().apply {
-                putParcelable("movie", Movie) // Movie nesnesini Bundle'a koy
+                putParcelable("dizi", TVShow) // Movie nesnesini Bundle'a koy
             }
         }
 
 
-        fragmentListesi.add(fragmentFilmDetaylar)
-        fragmentListesi.add(fragmentBenzerFilmler)
-        fragmentListesi.add(OnerilenFilmlerFragment())
+        fragmentListesi.add(DiziDetails)
+        fragmentListesi.add(FragmentBenzerDiziler())
+        fragmentListesi.add(OnerilenDizilerFragment())
 
 
 
         val adapter = MyViewPagerAdapter(requireActivity())
-        binding.viewPager23.adapter = adapter
+        binding.viewpager1.adapter = adapter
 
         fragmentBaslikListesi.add("Hakkında")
         fragmentBaslikListesi.add("Benzerler")
         fragmentBaslikListesi.add("Önerilenler")
 
 
-        TabLayoutMediator(binding.tabLayout, binding.viewPager23) { tab, position ->
+        TabLayoutMediator(binding.tablayout1, binding.viewpager1) { tab, position ->
             tab.setText(fragmentBaslikListesi[position])
         }.attach()
 
 
 
-
         return binding.root
     }
-
 
     inner class MyViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
         override fun getItemCount(): Int {
@@ -82,4 +86,6 @@ class MovieDetails : Fragment() {
         }
 
     }
+
+
 }

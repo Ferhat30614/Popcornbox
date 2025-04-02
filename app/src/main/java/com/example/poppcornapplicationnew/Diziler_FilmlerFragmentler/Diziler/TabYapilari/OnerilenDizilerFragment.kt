@@ -1,4 +1,4 @@
-package com.example.poppcornapplicationnew
+package com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari
 
 import android.os.Bundle
 import android.util.Log
@@ -9,15 +9,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poppcornapplicationnew.Adapter.TVShowAdapter
+import com.example.poppcornapplicationnew.ApiUtils
 import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShow
 import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShowResponse
-import com.example.poppcornapplicationnew.databinding.FragmentBenzerDizilerBinding
+import com.example.poppcornapplicationnew.TVShowDaoInterface
+import com.example.poppcornapplicationnew.databinding.FragmentOnerilenDizilerBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FragmentBenzerDiziler : Fragment() {
-    private lateinit var binding: FragmentBenzerDizilerBinding
+class OnerilenDizilerFragment : Fragment() {
+    private lateinit var binding: FragmentOnerilenDizilerBinding
     private lateinit var adapter: TVShowAdapter
     private lateinit var gtsi: TVShowDaoInterface
 
@@ -28,13 +30,12 @@ class FragmentBenzerDiziler : Fragment() {
     private var isLoading=false
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentBenzerDizilerBinding.inflate(inflater, container, false)
+        binding =FragmentOnerilenDizilerBinding.inflate(inflater,container,false)
 
         binding.rv.setHasFixedSize(true)
         binding.rv.layoutManager = GridLayoutManager(requireContext(), 3)
@@ -48,8 +49,7 @@ class FragmentBenzerDiziler : Fragment() {
 
         getDiziler(currenPage)
 
-
-        binding.rv.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+        binding.rv.addOnScrollListener(object : RecyclerView.OnScrollListener(){
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -64,15 +64,19 @@ class FragmentBenzerDiziler : Fragment() {
                     getDiziler(currenPage)
                 }
 
+
+
+
             }
+
+
+
+
 
         })
 
-
         return binding.root
     }
-
-
 
     private fun getDiziler(page: Int) {
         isLoading=true
@@ -81,23 +85,14 @@ class FragmentBenzerDiziler : Fragment() {
                 if ( response.body() != null) {
 
                     totalpage=response.body().totalPages
-                    val newList=response.body()?.results ?: emptyList()
-
-
-                    Log.e("liste boyutu",newList.size.toString())
+                    val newList=response.body().results
 
 
                     var filterliListim=newList.filter {tvShow ->
                         !list.any{it.id==tvShow.id}
                     }
-                    Log.e("liste boyutu",list.size.toString())
 
-                    var actionseris=filterliListim.filter { tvShow ->
-
-                        tvShow.genreIds.contains(10759)
-                    }
-
-                    list.addAll(actionseris)
+                    list.addAll(filterliListim)
 
                 }
                 Log.e("liste boyutu",list.size.toString())

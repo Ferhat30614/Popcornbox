@@ -1,4 +1,4 @@
-package com.example.poppcornapplicationnew
+package com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Filmler
 
 import android.os.Bundle
 import android.util.Log
@@ -9,16 +9,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poppcornapplicationnew.Adapter.MovieAdapter
+import com.example.poppcornapplicationnew.ApiUtils
 import com.example.poppcornapplicationnew.Entities.MovieResponse.Movie
 import com.example.poppcornapplicationnew.Entities.MovieResponse.MovieResponse
-import com.example.poppcornapplicationnew.databinding.FragmentOnerilenFilmlerBinding
+import com.example.poppcornapplicationnew.MovieDaoInterface
+import com.example.poppcornapplicationnew.databinding.FragmentFilmlerBinding
 import retrofit2.Callback
 import retrofit2.Response
 
-class OnerilenFilmlerFragment : Fragment() {
+class FilmlerFragment : Fragment() {
 
-
-    private lateinit var binding: FragmentOnerilenFilmlerBinding
+    private lateinit var binding: FragmentFilmlerBinding
     private lateinit var adapter: MovieAdapter
     private lateinit var gmdi: MovieDaoInterface
     private lateinit var list:ArrayList<Movie>
@@ -28,26 +29,16 @@ class OnerilenFilmlerFragment : Fragment() {
     private var isLoading=false
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentFilmlerBinding.inflate(inflater, container, false)
 
-
-
-
-
-        binding = FragmentOnerilenFilmlerBinding.inflate(inflater,container,false)
-
-        binding.rv.setHasFixedSize(true)
-        binding.rv.layoutManager = GridLayoutManager(requireContext(), 3)
-
+        binding.rvMovie.setHasFixedSize(true)
+        binding.rvMovie.layoutManager = GridLayoutManager(requireContext(), 3)
 
 
         list= ArrayList()
         adapter= MovieAdapter(requireContext(),list)
-        binding.rv.adapter=adapter
-
+        binding.rvMovie.adapter=adapter
 
 
         gmdi = ApiUtils.getMovieDaoInterface()
@@ -55,7 +46,7 @@ class OnerilenFilmlerFragment : Fragment() {
 
 
 
-        binding.rv.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+        binding.rvMovie.addOnScrollListener(object :RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
@@ -74,16 +65,8 @@ class OnerilenFilmlerFragment : Fragment() {
         })
 
 
-
-
-
-
-
-
-
         return binding.root
     }
-
 
     private fun getFilmler(page: Int, yukaridenEkleme:Boolean=false) {
         isLoading=true
@@ -101,7 +84,7 @@ class OnerilenFilmlerFragment : Fragment() {
                     }
 
 
-                    list.addAll(newList)
+                        list.addAll(newList)
 
 
                     isLoading=false
@@ -111,8 +94,6 @@ class OnerilenFilmlerFragment : Fragment() {
 
                     adapter.notifyDataSetChanged()
 
-
-
                 }
             }
             override fun onFailure(call: retrofit2.Call<MovieResponse>, t: Throwable) {
@@ -121,6 +102,4 @@ class OnerilenFilmlerFragment : Fragment() {
             }
         })
     }
-
-
 }

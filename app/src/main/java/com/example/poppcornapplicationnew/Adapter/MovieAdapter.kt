@@ -8,7 +8,7 @@ import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.poppcornapplicationnew.FilmlerFragmentDirections
+import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Filmler.FilmlerFragmentDirections
 import com.example.poppcornapplicationnew.Entities.MovieResponse.Movie
 import com.example.poppcornapplicationnew.R
 import com.squareup.picasso.Picasso

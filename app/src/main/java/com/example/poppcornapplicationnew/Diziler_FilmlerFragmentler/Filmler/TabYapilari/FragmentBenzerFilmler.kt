@@ -1,4 +1,4 @@
-package com.example.poppcornapplicationnew
+package com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Filmler.TabYapilari
 
 import android.os.Bundle
 import android.util.Log
@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poppcornapplicationnew.Adapter.MovieAdapter
+import com.example.poppcornapplicationnew.ApiUtils
 import com.example.poppcornapplicationnew.Entities.MovieResponse.Movie
 import com.example.poppcornapplicationnew.Entities.MovieResponse.MovieResponse
+import com.example.poppcornapplicationnew.MovieDaoInterface
 import com.example.poppcornapplicationnew.databinding.FragmentBenzerFilmlerBinding
 import retrofit2.Callback
 import retrofit2.Response

@@ -1,4 +1,4 @@
-package com.example.poppcornapplicationnew
+package com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari
 
 import android.os.Bundle
 import android.util.Log
@@ -9,16 +9,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poppcornapplicationnew.Adapter.TVShowAdapter
+import com.example.poppcornapplicationnew.ApiUtils
 import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShow
 import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShowResponse
-import com.example.poppcornapplicationnew.databinding.FragmentDizilerBinding
+import com.example.poppcornapplicationnew.TVShowDaoInterface
+import com.example.poppcornapplicationnew.databinding.FragmentBenzerDizilerBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DizilerFragment : Fragment() {
-
-    private lateinit var binding: FragmentDizilerBinding
+class FragmentBenzerDiziler : Fragment() {
+    private lateinit var binding: FragmentBenzerDizilerBinding
     private lateinit var adapter: TVShowAdapter
     private lateinit var gtsi: TVShowDaoInterface
 
@@ -30,23 +31,27 @@ class DizilerFragment : Fragment() {
 
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = FragmentDizilerBinding.inflate(inflater, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-        binding.rvTVShow.setHasFixedSize(true)
-        binding.rvTVShow.layoutManager = GridLayoutManager(requireContext(), 3)
+        binding = FragmentBenzerDizilerBinding.inflate(inflater, container, false)
+
+        binding.rv.setHasFixedSize(true)
+        binding.rv.layoutManager = GridLayoutManager(requireContext(), 3)
 
         list=ArrayList()
         adapter= TVShowAdapter(requireContext(),list)
 
-        binding.rvTVShow.adapter = adapter
+        binding.rv.adapter = adapter
 
         gtsi = ApiUtils.getTVDaoInterface()
 
         getDiziler(currenPage)
 
 
-        binding.rvTVShow.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+        binding.rv.addOnScrollListener(object :RecyclerView.OnScrollListener(){
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -61,17 +66,9 @@ class DizilerFragment : Fragment() {
                     getDiziler(currenPage)
                 }
 
-
-
-
             }
 
-
-
-
-
         })
-
 
         return binding.root
     }
@@ -83,14 +80,23 @@ class DizilerFragment : Fragment() {
                 if ( response.body() != null) {
 
                     totalpage=response.body().totalPages
-                    val newList=response.body().results
+                    val newList=response.body()?.results ?: emptyList()
+
+
+                    Log.e("liste boyutu",newList.size.toString())
 
 
                     var filterliListim=newList.filter {tvShow ->
                         !list.any{it.id==tvShow.id}
                     }
+                    Log.e("liste boyutu",list.size.toString())
 
-                    list.addAll(filterliListim)
+                    var actionseris=filterliListim.filter { tvShow ->
+
+                        tvShow.genreIds.contains(10759)
+                    }
+
+                    list.addAll(actionseris)
 
                 }
                 Log.e("liste boyutu",list.size.toString())
@@ -106,4 +112,7 @@ class DizilerFragment : Fragment() {
             }
         })
     }
+
+
+
 }

@@ -1,4 +1,4 @@
-package com.example.poppcornapplicationnew
+package com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Filmler.TabYapilari
 
 import com.example.poppcornapplicationnew.Entities.MediaDetailResponse.MediaDetailResponse
 import android.os.Bundle
@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.poppcornapplicationnew.ApiUtils
 import com.example.poppcornapplicationnew.Entities.MovieResponse.Movie
+import com.example.poppcornapplicationnew.MovieDetailsDaoInterface
+import com.example.poppcornapplicationnew.R
 import com.example.poppcornapplicationnew.databinding.FragmentFilmDetaylarBinding
 import com.squareup.picasso.Picasso
 import retrofit2.Call

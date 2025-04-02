@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentBenzerDiziler">
+    tools:context=".Diziler_FilmlerFragmentler.Diziler.TabYapilari.FragmentBenzerDiziler">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"

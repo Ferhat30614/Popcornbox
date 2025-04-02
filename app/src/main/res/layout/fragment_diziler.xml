@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DizilerFragment">
+    tools:context=".Diziler_FilmlerFragmentler.Diziler.DizilerFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTVShow"
