@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -37,12 +38,15 @@ class MainActivity : AppCompatActivity() {
         // Navigation Drawer başlığı ve RadioGroup işlemleri
         val baslik = binding.navigationView.inflateHeaderView(R.layout.navigation_baslik)
         val textViewBaslik = baslik.findViewById<TextView>(R.id.textViewBaslik)
-        val radioGroup = baslik.findViewById<RadioGroup>(R.id.radioGroupTürler)
+        val radioGroupTürler = baslik.findViewById<RadioGroup>(R.id.radioGroupTürler)
+        val radioGroupKategoriler = baslik.findViewById<RadioGroup>(R.id.radioGroupKategoriler)
+
 
         textViewBaslik.text = "Film & Dizi"
 
-        // RadioGroup için dinleyici ekliyoruz
-        radioGroup.setOnCheckedChangeListener { _, checkedId ->
+ // RadioGroup için dinleyici ekliyoruz
+
+        radioGroupTürler.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.radioButtonFilmler -> {
                     // Filmler fragment'ine geç
@@ -53,6 +57,31 @@ class MainActivity : AppCompatActivity() {
                     // Diziler fragment'ine geç
                     binding.drawer.closeDrawer(GravityCompat.START)
                     controller.navigate(R.id.dizilerFragment)
+                }
+            }
+        }
+// radioGroupKategoriler için işlemler
+
+        radioGroupKategoriler.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.radioButtonAksiyon -> {
+                    // Filmler fragment'ine geç
+                    binding.drawer.closeDrawer(GravityCompat.START)
+                    Toast.makeText(this, "Aksiyon Seçildi!", Toast.LENGTH_SHORT).show()
+
+
+                }
+                R.id.radioButtonKomedi -> {
+                    // Diziler fragment'ine geç
+                    binding.drawer.closeDrawer(GravityCompat.START)
+                    Toast.makeText(this, "Komedi seçildi!", Toast.LENGTH_SHORT).show()
+
+                }
+                R.id.radioButtonMacera -> {
+                    // Diziler fragment'ine geç
+                    binding.drawer.closeDrawer(GravityCompat.START)
+                    Toast.makeText(this, "Macera seçildi!", Toast.LENGTH_SHORT).show()
+
                 }
             }
         }

@@ -9,10 +9,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poppcornapplicationnew.Adapter.TVShowAdapter
-import com.example.poppcornapplicationnew.ApiUtils
+import com.example.poppcornapplicationnew.Retrofit.ApiUtils
 import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShow
 import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShowResponse
-import com.example.poppcornapplicationnew.TVShowDaoInterface
+import com.example.poppcornapplicationnew.Retrofit.TVShowDaoInterface
 import com.example.poppcornapplicationnew.databinding.FragmentBenzerDizilerBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,6 +28,7 @@ class FragmentBenzerDiziler : Fragment() {
     private var totalpage=1
 
     private var isLoading=false
+
 
 
 
@@ -91,12 +92,15 @@ class FragmentBenzerDiziler : Fragment() {
                     }
                     Log.e("liste boyutu",list.size.toString())
 
-                    var actionseris=filterliListim.filter { tvShow ->
 
-                        tvShow.genreIds.contains(10759)
+                    var targetIds= setOf(10759,35)
+
+                    var actionseries=filterliListim.filter { tvShow ->
+
+                        tvShow.genreIds.any{it in targetIds}
                     }
 
-                    list.addAll(actionseris)
+                    list.addAll(actionseries)
 
                 }
                 Log.e("liste boyutu",list.size.toString())

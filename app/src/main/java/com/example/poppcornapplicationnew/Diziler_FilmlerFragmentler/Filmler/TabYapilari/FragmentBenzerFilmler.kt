@@ -9,10 +9,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poppcornapplicationnew.Adapter.MovieAdapter
-import com.example.poppcornapplicationnew.ApiUtils
+import com.example.poppcornapplicationnew.Retrofit.ApiUtils
 import com.example.poppcornapplicationnew.Entities.MovieResponse.Movie
 import com.example.poppcornapplicationnew.Entities.MovieResponse.MovieResponse
-import com.example.poppcornapplicationnew.MovieDaoInterface
+import com.example.poppcornapplicationnew.Retrofit.MovieDaoInterface
 import com.example.poppcornapplicationnew.databinding.FragmentBenzerFilmlerBinding
 import retrofit2.Callback
 import retrofit2.Response
@@ -78,7 +78,7 @@ class FragmentBenzerFilmler : Fragment() {
 
                     // Filtrelenmiş listeden yalnızca kategori ID'si 28 olanları seç
                     val actionMovies = newList.filter { movie ->
-                        movie.genreIds.contains(28)
+                        movie.genreIds.contains(27)
                     }
 
                     // Aksiyon filmlerini listeye ekle

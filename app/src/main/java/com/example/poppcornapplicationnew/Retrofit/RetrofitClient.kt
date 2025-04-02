@@ -1,4 +1,4 @@
-package com.example.poppcornapplicationnew
+package com.example.poppcornapplicationnew.Retrofit
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

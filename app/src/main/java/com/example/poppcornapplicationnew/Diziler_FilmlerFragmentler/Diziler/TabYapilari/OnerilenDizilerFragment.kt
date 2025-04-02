@@ -9,10 +9,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poppcornapplicationnew.Adapter.TVShowAdapter
-import com.example.poppcornapplicationnew.ApiUtils
+import com.example.poppcornapplicationnew.Retrofit.ApiUtils
 import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShow
 import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShowResponse
-import com.example.poppcornapplicationnew.TVShowDaoInterface
+import com.example.poppcornapplicationnew.Retrofit.TVShowDaoInterface
 import com.example.poppcornapplicationnew.databinding.FragmentOnerilenDizilerBinding
 import retrofit2.Call
 import retrofit2.Callback

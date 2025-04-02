@@ -1,4 +1,4 @@
-package com.example.poppcornapplicationnew
+package com.example.poppcornapplicationnew.Retrofit
 
 import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShowResponse
 import retrofit2.Call

@@ -1,4 +1,4 @@
-package com.example.poppcornapplicationnew
+package com.example.poppcornapplicationnew.Retrofit
 
 class ApiUtils {
 
@@ -8,25 +8,25 @@ class ApiUtils {
 
         val BaseUrl="https://api.themoviedb.org/3/"
 
-        fun getMovieDaoInterface():MovieDaoInterface{
+        fun getMovieDaoInterface(): MovieDaoInterface {
 
             return RetrofitClient.getClient(BaseUrl).create(MovieDaoInterface::class.java)
 
 
         }
 
-        fun getTVDaoInterface():TVShowDaoInterface{
+        fun getTVDaoInterface(): TVShowDaoInterface {
             return RetrofitClient.getClient(BaseUrl).create(TVShowDaoInterface::class.java)
 
         }
 
 
-        fun getTvDetailsDaoInterface():TvDetailsDaoInterface{
+        fun getTvDetailsDaoInterface(): TvDetailsDaoInterface {
             return RetrofitClient.getClient(BaseUrl).create(TvDetailsDaoInterface::class.java)
 
         }
 
-        fun getMovieDetailsDaoInterface():MovieDetailsDaoInterface{
+        fun getMovieDetailsDaoInterface(): MovieDetailsDaoInterface {
             return RetrofitClient.getClient(BaseUrl).create(MovieDetailsDaoInterface::class.java)
 
         }

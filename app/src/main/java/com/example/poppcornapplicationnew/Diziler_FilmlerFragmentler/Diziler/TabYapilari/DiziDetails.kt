@@ -7,10 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.poppcornapplicationnew.ApiUtils
+import com.example.poppcornapplicationnew.Retrofit.ApiUtils
 import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShow
 import com.example.poppcornapplicationnew.R
-import com.example.poppcornapplicationnew.TvDetailsDaoInterface
+import com.example.poppcornapplicationnew.Retrofit.TvDetailsDaoInterface
 import com.example.poppcornapplicationnew.databinding.FragmentDiziDetailsBinding
 import com.squareup.picasso.Picasso
 import retrofit2.Call
@@ -59,9 +59,14 @@ class DiziDetails : Fragment() {
                         // Özeti Ayarla
                         binding.tvOverview.text = dizi.overview ?: "Özet bilgisi bulunmuyor."
 
+
                         // Türleri Tek Bir TextView'e Yaz
                         val genresText = dizi.genres?.joinToString(separator = ", ") { it.name ?: "" }
                         binding.tvGenres.text = genresText ?: "Tür bilgisi bulunmuyor."
+
+                        var sendIds=dizi.genres
+                        //dscsncswndeıusnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+
 
                         // İlk Yayın Tarihi
                         binding.tvFirstAirDate.text = "İlk Yayın Tarihi: ${dizi.firstAirDate ?: "Bilinmiyor"}"

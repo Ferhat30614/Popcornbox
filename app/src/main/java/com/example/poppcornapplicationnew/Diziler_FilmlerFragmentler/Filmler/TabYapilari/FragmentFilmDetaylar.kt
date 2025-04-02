@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.poppcornapplicationnew.ApiUtils
+import com.example.poppcornapplicationnew.Retrofit.ApiUtils
 import com.example.poppcornapplicationnew.Entities.MovieResponse.Movie
-import com.example.poppcornapplicationnew.MovieDetailsDaoInterface
+import com.example.poppcornapplicationnew.Retrofit.MovieDetailsDaoInterface
 import com.example.poppcornapplicationnew.R
 import com.example.poppcornapplicationnew.databinding.FragmentFilmDetaylarBinding
 import com.squareup.picasso.Picasso
