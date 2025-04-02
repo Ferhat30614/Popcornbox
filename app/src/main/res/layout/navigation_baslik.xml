@@ -16,39 +16,38 @@
         android:id="@+id/textViewBaslik2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
-        android:layout_marginBottom="243dp"
+        android:layout_marginTop="40dp"
         android:text="Kategoriler"
         android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupKategoriler"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupTürler" />
 
     <TextView
         android:id="@+id/textViewBaslik"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Kategoriler"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="68dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
-        android:id="@+id/radioGroupKategoriler"
+        android:id="@+id/radioGroupTürler"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/textViewBaslik"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBaslik">
 
         <RadioButton
             android:id="@+id/radioButtonFilmler"
@@ -71,28 +70,29 @@
     </RadioGroup>
 
     <RadioGroup
+        android:id="@+id/radioGroupKategoriler"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewBaslik2">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radioButtonAksiyon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Aksiyon" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/radioButtonKomedi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Komedi" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/radioButtonMacera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Macera" />

@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         // Navigation Drawer başlığı ve RadioGroup işlemleri
         val baslik = binding.navigationView.inflateHeaderView(R.layout.navigation_baslik)
         val textViewBaslik = baslik.findViewById<TextView>(R.id.textViewBaslik)
-        val radioGroup = baslik.findViewById<RadioGroup>(R.id.radioGroupKategoriler)
+        val radioGroup = baslik.findViewById<RadioGroup>(R.id.radioGroupTürler)
 
         textViewBaslik.text = "Film & Dizi"
 
