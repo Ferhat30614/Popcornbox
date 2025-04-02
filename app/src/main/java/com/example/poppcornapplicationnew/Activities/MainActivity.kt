@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         val textViewBaslik = baslik.findViewById<TextView>(R.id.textViewBaslik)
         val radioGroup = baslik.findViewById<RadioGroup>(R.id.radioGroupKategoriler)
 
-        textViewBaslik.text = "Dizin"
+        textViewBaslik.text = "Film & Dizi"
 
         // RadioGroup için dinleyici ekliyoruz
         radioGroup.setOnCheckedChangeListener { _, checkedId ->
