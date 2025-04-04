@@ -46,13 +46,24 @@
         android:id="@+id/benzerDizilerFragment"
         android:name="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.BenzerDizilerFragment"
         android:label="fragment_benzer_diziler"
-        tools:layout="@layout/fragment_benzer_diziler"/>
+        tools:layout="@layout/fragment_benzer_diziler">
+        <argument
+            android:name="IdList"
+            app:argType="integer[]" />
+    </fragment>
     <fragment
         android:id="@+id/diziDetailsFragment"
         android:name="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.DiziDetailsFragment"
         android:label="fragment_dizi_details"
         tools:layout="@layout/fragment_dizi_details"
-        />
+        >
+        <argument
+            android:name="myHead"
+            app:argType="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.BenzerDizilerFragment" />
+        <action
+            android:id="@+id/action_benzerDizilerFragmente"
+            app:destination="@id/benzerDizilerFragment" />
+    </fragment>
 
 
 </navigation>
