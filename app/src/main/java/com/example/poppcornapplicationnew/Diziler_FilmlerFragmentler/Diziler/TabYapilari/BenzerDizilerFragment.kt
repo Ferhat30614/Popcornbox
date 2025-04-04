@@ -1,5 +1,3 @@
-package com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari
-
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -18,7 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FragmentBenzerDiziler : Fragment() {
+class BenzerDizilerFragment : Fragment() {
     private lateinit var binding: FragmentBenzerDizilerBinding
     private lateinit var adapter: TVShowAdapter
     private lateinit var gtsi: TVShowDaoInterface
@@ -28,9 +26,6 @@ class FragmentBenzerDiziler : Fragment() {
     private var totalpage=1
 
     private var isLoading=false
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

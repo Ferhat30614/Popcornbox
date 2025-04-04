@@ -1,5 +1,3 @@
-package com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari
-
 import com.example.poppcornapplicationnew.Entities.MediaDetailResponse.MediaDetailResponse
 import android.os.Bundle
 import android.util.Log
@@ -17,8 +15,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DiziDetails : Fragment() {
-    private lateinit var binding: FragmentDiziDetailsBinding
+class DiziDetailsFragment : Fragment() {
+    private lateinit var binding:FragmentDiziDetailsBinding
     private lateinit var tvDetailsDaoInterface: TvDetailsDaoInterface
     private var diziDetay: MediaDetailResponse? = null
 
@@ -65,7 +63,7 @@ class DiziDetails : Fragment() {
                         binding.tvGenres.text = genresText ?: "Tür bilgisi bulunmuyor."
 
                         var sendIds=dizi.genres
-                        //dscsncswndeıusnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+
 
 
                         // İlk Yayın Tarihi

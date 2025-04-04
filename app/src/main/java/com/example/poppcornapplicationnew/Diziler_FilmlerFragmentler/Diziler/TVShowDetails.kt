@@ -1,5 +1,6 @@
 package com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler
 
+import DiziDetailsFragment
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,8 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.DiziDetails
-import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.FragmentBenzerDiziler
+import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.BenzerDizilerFragment
 import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.OnerilenDizilerFragment
 import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Filmler.TabYapilari.FragmentBenzerFilmler
 import com.example.poppcornapplicationnew.databinding.FragmentTvShowDetailsBinding
@@ -34,13 +34,8 @@ class TVShowDetails : Fragment() {
         val bundle: TVShowDetailsArgs by navArgs()
         val TVShow = bundle.mydizi
 
-
-
-
-
-
         // Fragmentlere Movie nesnesini gönder
-        val DiziDetails = DiziDetails().apply {
+        val DiziDetails = DiziDetailsFragment().apply {
             arguments = Bundle().apply {
                 putParcelable("dizi", TVShow) // Movie nesnesini Bundle'a koy
             }
@@ -53,8 +48,8 @@ class TVShowDetails : Fragment() {
         }
 
 
-        fragmentListesi.add(DiziDetails)
-        fragmentListesi.add(FragmentBenzerDiziler())
+        fragmentListesi.add(DiziDetailsFragment())
+        fragmentListesi.add(BenzerDizilerFragment())
         fragmentListesi.add(OnerilenDizilerFragment())
 
 
@@ -75,6 +70,7 @@ class TVShowDetails : Fragment() {
 
         return binding.root
     }
+
 
     inner class MyViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
         override fun getItemCount(): Int {

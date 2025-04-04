@@ -42,5 +42,17 @@
             android:name="mydizi"
             app:argType="com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShow" />
     </fragment>
+    <fragment
+        android:id="@+id/benzerDizilerFragment"
+        android:name="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.BenzerDizilerFragment"
+        android:label="fragment_benzer_diziler"
+        tools:layout="@layout/fragment_benzer_diziler"/>
+    <fragment
+        android:id="@+id/diziDetailsFragment"
+        android:name="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.DiziDetailsFragment"
+        android:label="fragment_dizi_details"
+        tools:layout="@layout/fragment_dizi_details"
+        />
+
 
 </navigation>
