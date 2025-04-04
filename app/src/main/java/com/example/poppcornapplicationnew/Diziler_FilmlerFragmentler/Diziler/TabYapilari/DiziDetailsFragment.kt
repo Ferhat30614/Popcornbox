@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.DizilerFragmentDirections
+import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.DiziDetailsFragmentDirections
 import com.example.poppcornapplicationnew.Retrofit.ApiUtils
 import com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShow
 import com.example.poppcornapplicationnew.R
@@ -19,6 +22,8 @@ class DiziDetailsFragment : Fragment() {
     private lateinit var binding:FragmentDiziDetailsBinding
     private lateinit var tvDetailsDaoInterface: TvDetailsDaoInterface
     private var diziDetay: MediaDetailResponse? = null
+    private lateinit var FilmlerIdListesi: ArrayList<Int>
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +40,7 @@ class DiziDetailsFragment : Fragment() {
         } else {
             getDiziDetails(dizi.id)
         }
+        FilmlerIdListesi=ArrayList()
 
         return binding.root
     }
@@ -57,13 +63,24 @@ class DiziDetailsFragment : Fragment() {
                         // Özeti Ayarla
                         binding.tvOverview.text = dizi.overview ?: "Özet bilgisi bulunmuyor."
 
+                        var liste=dizi.genres
+
+
+
+                        liste?.forEach{liste->
+
+                            var a= liste.id
+
+                            if (a!=null){
+                                FilmlerIdListesi.add(a)
+                            }
+                        }
+
+                        
 
                         // Türleri Tek Bir TextView'e Yaz
                         val genresText = dizi.genres?.joinToString(separator = ", ") { it.name ?: "" }
                         binding.tvGenres.text = genresText ?: "Tür bilgisi bulunmuyor."
-
-                        var sendIds=dizi.genres
-
 
 
                         // İlk Yayın Tarihi

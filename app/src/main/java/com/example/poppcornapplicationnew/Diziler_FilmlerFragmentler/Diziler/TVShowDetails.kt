@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.BenzerDizilerFragment
 import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.OnerilenDizilerFragment
 import com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Filmler.TabYapilari.FragmentBenzerFilmler
 import com.example.poppcornapplicationnew.databinding.FragmentTvShowDetailsBinding
