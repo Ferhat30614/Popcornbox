@@ -2,12 +2,14 @@ package com.example.poppcornapplicationnew.activities
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.fragment.NavHostFragment
@@ -15,7 +17,7 @@ import androidx.navigation.ui.NavigationUI
 import com.example.poppcornapplicationnew.R
 import com.example.poppcornapplicationnew.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.navigationView, controller)
 
         binding.toolbar.title = "Popcorn Application"
+        setSupportActionBar(binding.toolbar)
 
         val toggle = ActionBarDrawerToggle(this, binding.drawer, binding.toolbar, 0, 0)
         binding.drawer.addDrawerListener(toggle)
@@ -124,11 +127,30 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_search,menu)
+        val item=menu.findItem(R.id.action_search)
+        val searchView=item.actionView as SearchView
+        searchView.setOnQueryTextListener(this)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onBackPressed() {
         if (binding.drawer.isDrawerOpen(GravityCompat.START)) {
             binding.drawer.closeDrawer(GravityCompat.START)
         } else {
             onBackPressedDispatcher.onBackPressed()
         }
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        Log.e("onQueryTextSubmit",query.toString())
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        Log.e("onQueryTextChange",newText.toString())
+        return true
     }
 }
