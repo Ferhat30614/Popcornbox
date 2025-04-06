@@ -57,9 +57,6 @@ class MovieAdapter (private val mcontext:Context,private val  movieArraylist:Lis
             val action= FilmlerFragmentDirections.actionfilmdetaya(nesnem)
             Navigation.findNavController(holder.imageViewFilm).navigate(action)
 
-
-
-
         }
 
 

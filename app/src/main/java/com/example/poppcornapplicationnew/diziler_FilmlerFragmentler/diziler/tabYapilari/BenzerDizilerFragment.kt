@@ -34,12 +34,13 @@ class BenzerDizilerFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // TvShowdandetailden  bir tvshow nesnesi alıyoruz burada
-        val dizi = arguments?.getParcelable<TVShow>("dizi")
-        if (dizi == null) {
+
+        val tvshow = arguments?.getParcelable<TVShow>("dizi")
+        if (tvshow == null) {
             Log.e("tvshowdan aldığın Tvshow nesnesi NUll ","tvshowdan aldığın Tvshow nesnesi NUll ")
 
         }else{
-            getTvShowIds=dizi.genreIds.toList()
+            getTvShowIds=tvshow.genreIds.toList()
         }
 
 

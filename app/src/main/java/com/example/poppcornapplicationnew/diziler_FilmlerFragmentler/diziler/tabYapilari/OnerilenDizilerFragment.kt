@@ -29,7 +29,6 @@ class OnerilenDizilerFragment : Fragment() {
 
     private var isLoading=false
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,21 +57,11 @@ class OnerilenDizilerFragment : Fragment() {
                 val lastVisibleItemPosition=layoutManager.findLastVisibleItemPosition()
                 val totalItemCount=layoutManager.itemCount
 
-
                 if (lastVisibleItemPosition== totalItemCount-1 && !isLoading && currenPage<totalpage){
                     currenPage++
                     getDiziler(currenPage)
                 }
-
-
-
-
             }
-
-
-
-
-
         })
 
         return binding.root
@@ -108,7 +97,5 @@ class OnerilenDizilerFragment : Fragment() {
             }
         })
     }
-
-
 
 }

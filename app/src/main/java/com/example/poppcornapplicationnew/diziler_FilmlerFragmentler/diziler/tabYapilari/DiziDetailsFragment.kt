@@ -20,7 +20,6 @@ class DiziDetailsFragment : Fragment() {
     private lateinit var tvDetailsDaoInterface: TvDetailsDaoInterface
     private var tvshowDetail: MediaDetailResponse? = null
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,19 +28,17 @@ class DiziDetailsFragment : Fragment() {
         tvDetailsDaoInterface = ApiUtils.getTvDetailsDaoInterface()
 
         // Gelen dizi argümanını alıyoruz
-        val dizi = arguments?.getParcelable<TVShow>("dizi")
+        val tvshow = arguments?.getParcelable<TVShow>("dizi")
 
-        if (dizi == null) {
+        if (tvshow == null) {
             Log.e("DiziDetails", "Dizi argümanı eksik")
         } else {
-            getDiziDetails(dizi.id)
+            getDiziDetails(tvshow.id)
 
         }
 
         return binding.root
     }
-
-
 
     private fun getDiziDetails(id: Int) {
         tvDetailsDaoInterface.getTvShowDetails(tvId = id).enqueue(object : Callback<MediaDetailResponse> {
@@ -60,9 +57,6 @@ class DiziDetailsFragment : Fragment() {
 
                         // Özeti Ayarla
                         binding.tvOverview.text = dizi.overview ?: "Özet bilgisi bulunmuyor."
-
-
-                        
 
                         // Türleri Tek Bir TextView'e Yaz
                         val genresText = dizi.genres?.joinToString(separator = ", ") { it.name ?: "" }
