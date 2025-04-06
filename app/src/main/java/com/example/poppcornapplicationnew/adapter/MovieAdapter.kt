@@ -13,7 +13,7 @@ import com.example.poppcornapplicationnew.entities.movieResponse.Movie
 import com.example.poppcornapplicationnew.R
 import com.squareup.picasso.Picasso
 
-class MovieAdapter (private val mcontext:Context,private val  movieArraylist:List<Movie>):RecyclerView.Adapter<MovieAdapter.NesneTutucu>() {
+class MovieAdapter (private val mcontext:Context,private var  movieArraylist:List<Movie>):RecyclerView.Adapter<MovieAdapter.NesneTutucu>() {
 
 
 
@@ -59,9 +59,13 @@ class MovieAdapter (private val mcontext:Context,private val  movieArraylist:Lis
 
         }
 
+    }
 
 
-
+    // gptnin kodu aaa
+    fun updateList(newList: List<Movie>) {
+        movieArraylist=newList
+        notifyDataSetChanged()
     }
 
 

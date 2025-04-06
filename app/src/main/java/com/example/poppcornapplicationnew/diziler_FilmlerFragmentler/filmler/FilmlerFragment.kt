@@ -28,7 +28,6 @@ class FilmlerFragment : Fragment() {
     private var totalpage=1
     private var isLoading=false
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentFilmlerBinding.inflate(inflater, container, false)
 
@@ -46,6 +45,7 @@ class FilmlerFragment : Fragment() {
 
 
 
+
         binding.rvMovie.addOnScrollListener(object :RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -59,11 +59,9 @@ class FilmlerFragment : Fragment() {
                     currentpage++
                     getFilmler(currentpage)
 
-
                 }
             }
         })
-
 
         return binding.root
     }
@@ -82,14 +80,12 @@ class FilmlerFragment : Fragment() {
                     val newList=yenilist.filter { movie: Movie ->
                         !list.any { it.id==movie.id }
                     }
-
-
-                        list.addAll(newList)
+                    list.addAll(newList)
 
 
                     isLoading=false
 
-                    Log.e("liste boyutu",list.size.toString())
+
 
 
                     adapter.notifyDataSetChanged()
@@ -101,5 +97,11 @@ class FilmlerFragment : Fragment() {
                 isLoading=false
             }
         })
+    }
+
+    // gptnin kodu aaa
+    fun filterMovies(query: String) {
+        val filteredList = list.filter { it.title.contains(query, ignoreCase = true) }
+        adapter.updateList(filteredList)
     }
 }

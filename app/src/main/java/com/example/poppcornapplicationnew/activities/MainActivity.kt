@@ -16,14 +16,19 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.poppcornapplicationnew.R
 import com.example.poppcornapplicationnew.databinding.ActivityMainBinding
+import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.FilmlerFragment
+
 
 class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
     private lateinit var binding: ActivityMainBinding
+     var value:Boolean=false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navigation_host_fragment) as NavHostFragment
         val controller = navHostFragment.navController
@@ -47,7 +52,7 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
 
         textViewTitle.text = "Film & Dizi"
 
- // RadioGroup için dinleyici ekliyoruz
+        // RadioGroup için dinleyici ekliyoruz
 
         radioGroupTypes.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
@@ -71,6 +76,9 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
                     // Filmler fragment'ine geç
                     binding.drawer.closeDrawer(GravityCompat.START)
                     Toast.makeText(this, "Aksiyon Seçildi!", Toast.LENGTH_SHORT).show()
+                   value=true
+                    Log.e("merhaba değeri ben true yaptım",value.toString())
+
 
 
 
@@ -81,11 +89,15 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
                     Toast.makeText(this, "Komedi seçildi!", Toast.LENGTH_SHORT).show()
 
 
+
+
                 }
                 R.id.radioButtonMacera -> {
                     // Diziler fragment'ine geç
                     binding.drawer.closeDrawer(GravityCompat.START)
                     Toast.makeText(this, "Macera seçildi!", Toast.LENGTH_SHORT).show()
+
+
 
                 }
             }
@@ -151,6 +163,12 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
 
     override fun onQueryTextChange(newText: String?): Boolean {
         Log.e("onQueryTextChange",newText.toString())
+
+
+        // gptnin kodu aaa
+        val fragment = supportFragmentManager.findFragmentById(R.id.navigation_host_fragment) as? FilmlerFragment
+        fragment?.filterMovies(newText.orEmpty()) // Arama fonksiyonunu çağır
+
         return true
     }
 }
