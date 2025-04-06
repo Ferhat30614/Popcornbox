@@ -17,10 +17,10 @@ import com.example.poppcornapplicationnew.databinding.FragmentBenzerFilmlerBindi
 import retrofit2.Callback
 import retrofit2.Response
 
-class FragmentBenzerFilmler : Fragment() {
+class BenzerFilmlerFragment : Fragment() {
     private lateinit var binding: FragmentBenzerFilmlerBinding
     private lateinit var adapter: MovieAdapter
-    private lateinit var gmdi: MovieDaoInterface
+    private lateinit var getMovieDaoInterface: MovieDaoInterface
     private lateinit var list: ArrayList<Movie>
 
     private var currentpage = 1
@@ -49,7 +49,7 @@ class FragmentBenzerFilmler : Fragment() {
         adapter = MovieAdapter(requireContext(), list)
         binding.rv.adapter = adapter
 
-        gmdi = ApiUtils.getMovieDaoInterface()
+        getMovieDaoInterface = ApiUtils.getMovieDaoInterface()
         getFilmler(currentpage)
 
         binding.rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -71,7 +71,7 @@ class FragmentBenzerFilmler : Fragment() {
     }
     private fun getFilmler(page: Int, yukaridenEkleme: Boolean = false) {
         isLoading = true
-        gmdi.getMovie(page = page).enqueue(object : Callback<MovieResponse> {
+        getMovieDaoInterface.getMovie(page = page).enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: retrofit2.Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.body() != null) {
 

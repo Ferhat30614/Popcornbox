@@ -21,7 +21,7 @@ class BenzerDizilerFragment:Fragment() {
 
     private lateinit var binding: FragmentBenzerDizilerBinding
     private lateinit var adapter: TVShowAdapter
-    private lateinit var gtsi: TVShowDaoInterface
+    private lateinit var getTVShowDaoInterface: TVShowDaoInterface
     private lateinit var list: ArrayList<TVShow>
     private var currenPage=1
     private var totalpage=1
@@ -56,7 +56,7 @@ class BenzerDizilerFragment:Fragment() {
 
         binding.rv.adapter = adapter
 
-        gtsi = ApiUtils.getTVDaoInterface()
+        getTVShowDaoInterface = ApiUtils.getTVDaoInterface()
 
         getDiziler(currenPage)
 
@@ -87,7 +87,7 @@ class BenzerDizilerFragment:Fragment() {
 
     private fun getDiziler(page: Int) {
         isLoading=true
-        gtsi.getTvShow(page = page).enqueue(object : Callback<TVShowResponse> {
+        getTVShowDaoInterface.getTvShow(page = page).enqueue(object : Callback<TVShowResponse> {
             override fun onResponse(call: Call<TVShowResponse>, response: Response<TVShowResponse>) {
                 if ( response.body() != null) {
 

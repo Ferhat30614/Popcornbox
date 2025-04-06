@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.tabYapilari.FragmentBenzerFilmler
-import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.tabYapilari.FragmentFilmDetaylar
+import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.tabYapilari.BenzerFilmlerFragment
+import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.tabYapilari.FilmDetailsFragment
 import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.tabYapilari.OnerilenFilmlerFragment
 import com.example.poppcornapplicationnew.databinding.FragmentMovieDetailsBinding
 import com.google.android.material.tabs.TabLayoutMediator
@@ -16,11 +16,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class MovieDetails : Fragment() {
     private lateinit var binding: FragmentMovieDetailsBinding
-    private val fragmentListesi = ArrayList<Fragment>()
-    private val fragmentBaslikListesi = ArrayList<String>()
-
-
-
+    private val fragmentList = ArrayList<Fragment>()
+    private val fragmentTitleList = ArrayList<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,39 +30,36 @@ class MovieDetails : Fragment() {
 
 
         // Fragmentlere Movie nesnesini gönder
-        val fragmentFilmDetaylariBundle = FragmentFilmDetaylar().apply {
+        val bundleFilmDetailsFragment = FilmDetailsFragment().apply {
             arguments = Bundle().apply {
                 putParcelable("movie", Movie) // Movie nesnesini Bundle'a koy
             }
         }
 
-        val fragmentBenzerFilmleriBundle = FragmentBenzerFilmler().apply {
+        val bundleBenzerFilmlerFragment = BenzerFilmlerFragment().apply {
             arguments = Bundle().apply {
                 putParcelable("movie", Movie) // Movie nesnesini Bundle'a koy
             }
         }
 
 
-        fragmentListesi.add(fragmentFilmDetaylariBundle)
-        fragmentListesi.add(fragmentBenzerFilmleriBundle)
-        fragmentListesi.add(OnerilenFilmlerFragment())
+        fragmentList.add(bundleFilmDetailsFragment)
+        fragmentList.add(bundleBenzerFilmlerFragment)
+        fragmentList.add(OnerilenFilmlerFragment())
 
 
 
         val adapter = MyViewPagerAdapter(requireActivity())
         binding.viewPager23.adapter = adapter
 
-        fragmentBaslikListesi.add("Hakkında")
-        fragmentBaslikListesi.add("Benzerler")
-        fragmentBaslikListesi.add("Önerilenler")
+        fragmentTitleList.add("Hakkında")
+        fragmentTitleList.add("Benzerler")
+        fragmentTitleList.add("Önerilenler")
 
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager23) { tab, position ->
-            tab.setText(fragmentBaslikListesi[position])
+            tab.setText(fragmentTitleList[position])
         }.attach()
-
-
-
 
         return binding.root
     }
@@ -73,11 +67,11 @@ class MovieDetails : Fragment() {
 
     inner class MyViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
         override fun getItemCount(): Int {
-            return fragmentListesi.size
+            return fragmentList.size
         }
 
         override fun createFragment(position: Int): Fragment {
-            return fragmentListesi[position]
+            return fragmentList[position]
         }
 
     }

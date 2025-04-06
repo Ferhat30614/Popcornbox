@@ -36,17 +36,17 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
 
         // Navigation Drawer başlığı ve RadioGroup işlemleri
-        val baslik = binding.navigationView.inflateHeaderView(R.layout.navigation_baslik)
-        val textViewBaslik = baslik.findViewById<TextView>(R.id.textViewBaslik)
-        val radioGroupTürler = baslik.findViewById<RadioGroup>(R.id.radioGroupTürler)
-        val radioGroupKategoriler = baslik.findViewById<RadioGroup>(R.id.radioGroupKategoriler)
+        val title = binding.navigationView.inflateHeaderView(R.layout.navigation_baslik)
+        val textViewTitle = title.findViewById<TextView>(R.id.textViewBaslik)
+        val radioGroupTypes = title.findViewById<RadioGroup>(R.id.radioGroupTürler)
+        val radioGroupCategories = title.findViewById<RadioGroup>(R.id.radioGroupKategoriler)
 
 
-        textViewBaslik.text = "Film & Dizi"
+        textViewTitle.text = "Film & Dizi"
 
  // RadioGroup için dinleyici ekliyoruz
 
-        radioGroupTürler.setOnCheckedChangeListener { _, checkedId ->
+        radioGroupTypes.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.radioButtonFilmler -> {
                     // Filmler fragment'ine geç
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         }
 // radioGroupKategoriler için işlemler
 
-        radioGroupKategoriler.setOnCheckedChangeListener { _, checkedId ->
+        radioGroupCategories.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.radioButtonAksiyon -> {
                     // Filmler fragment'ine geç
@@ -70,11 +70,13 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Aksiyon Seçildi!", Toast.LENGTH_SHORT).show()
 
 
+
                 }
                 R.id.radioButtonKomedi -> {
                     // Diziler fragment'ine geç
                     binding.drawer.closeDrawer(GravityCompat.START)
                     Toast.makeText(this, "Komedi seçildi!", Toast.LENGTH_SHORT).show()
+
 
                 }
                 R.id.radioButtonMacera -> {
@@ -86,10 +88,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // special Toolbara tıklayınca geriye girt diyoruz  burda
         binding.specialToolbar.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
-
+        // special Toolbar hangi durumlarda gürünüz hangi durumlarda görünmez
         controller.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.movieDetails -> {
@@ -100,7 +103,7 @@ class MainActivity : AppCompatActivity() {
                         R.color.gray
                     ))
                     binding.specialToolbar.title = "Film adı"
-                    Log.e("SpecialToolbar", "55555555")
+
                 }
                 R.id.TVShowDetails -> {
                     binding.toolbar.visibility = View.GONE
@@ -109,14 +112,13 @@ class MainActivity : AppCompatActivity() {
                     binding.specialToolbar.setBackgroundColor(ContextCompat.getColor(this,
                         R.color.gray
                     ))
-                    binding.specialToolbar.title = "Film adı"
-                    Log.e("SpecialToolbar", "55555555")
+                    binding.specialToolbar.title = "Dizi adı"
+
                 }
                 else -> {
                     binding.toolbar.visibility = View.VISIBLE
                     binding.bottomNav.visibility = View.VISIBLE
                     binding.specialToolbar.visibility = View.GONE
-                    Log.e("SpecialToolbar", "Special Toolbar shown")
                 }
             }
         }

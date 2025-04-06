@@ -16,8 +16,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class TVShowDetails : Fragment() {
     private lateinit var binding: FragmentTvShowDetailsBinding
-    private val fragmentListesi = ArrayList<Fragment>()
-    private val fragmentBaslikListesi = ArrayList<String>()
+    private val fragmentList = ArrayList<Fragment>()
+    private val fragmentTitleList = ArrayList<String>()
 
 
 
@@ -26,7 +26,6 @@ class TVShowDetails : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        //FragmentMovieDetailsBinding.inflate(inflater, container, false)
 
         binding = FragmentTvShowDetailsBinding.inflate(inflater,container,false)
         val bundle: TVShowDetailsArgs by navArgs()
@@ -34,41 +33,37 @@ class TVShowDetails : Fragment() {
 
 
 
-        // Fragmentlere Movie nesnesini gönder
-        val DiziDetailsBundle = DiziDetailsFragment().apply {
+        // Fragmentlere TVShow nesnesini gönder
+        val bundleDiziDetailsFragment = DiziDetailsFragment().apply {
             arguments = Bundle().apply {
                 putParcelable("dizi", TVShow) // Movie nesnesini Bundle'a koy
             }
         }
 
-
-
-        val fragmentBenzerDizilerBundle = BenzerDizilerFragment().apply {
+        val bundleBenzerDizilerFragment = BenzerDizilerFragment().apply {
             arguments = Bundle().apply {
                 putParcelable("dizi", TVShow) // tvshow nesnesini Bundle'a koy
             }
         }
 
 
-        fragmentListesi.add(DiziDetailsBundle)
-        fragmentListesi.add(fragmentBenzerDizilerBundle)
-        fragmentListesi.add(OnerilenDizilerFragment())
+        fragmentList.add(bundleDiziDetailsFragment)
+        fragmentList.add(bundleBenzerDizilerFragment)
+        fragmentList.add(OnerilenDizilerFragment())
 
 
 
         val adapter = MyViewPagerAdapter(requireActivity())
         binding.viewpager1.adapter = adapter
 
-        fragmentBaslikListesi.add("Hakkında")
-        fragmentBaslikListesi.add("Benzerler")
-        fragmentBaslikListesi.add("Önerilenler")
+        fragmentTitleList.add("Hakkında")
+        fragmentTitleList.add("Benzerler")
+        fragmentTitleList.add("Önerilenler")
 
 
         TabLayoutMediator(binding.tablayout1, binding.viewpager1) { tab, position ->
-            tab.setText(fragmentBaslikListesi[position])
+            tab.setText(fragmentTitleList[position])
         }.attach()
-
-
 
         return binding.root
     }
@@ -76,11 +71,11 @@ class TVShowDetails : Fragment() {
 
     inner class MyViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
         override fun getItemCount(): Int {
-            return fragmentListesi.size
+            return fragmentList.size
         }
 
         override fun createFragment(position: Int): Fragment {
-            return fragmentListesi[position]
+            return fragmentList[position]
         }
 
     }

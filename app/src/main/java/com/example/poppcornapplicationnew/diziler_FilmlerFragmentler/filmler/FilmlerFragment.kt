@@ -21,7 +21,7 @@ class FilmlerFragment : Fragment() {
 
     private lateinit var binding: FragmentFilmlerBinding
     private lateinit var adapter: MovieAdapter
-    private lateinit var gmdi: MovieDaoInterface
+    private lateinit var getMovieDaoInterface: MovieDaoInterface
     private lateinit var list:ArrayList<Movie>
 
     private var currentpage=1
@@ -41,7 +41,7 @@ class FilmlerFragment : Fragment() {
         binding.rvMovie.adapter=adapter
 
 
-        gmdi = ApiUtils.getMovieDaoInterface()
+        getMovieDaoInterface = ApiUtils.getMovieDaoInterface()
         getFilmler(currentpage)
 
 
@@ -70,7 +70,7 @@ class FilmlerFragment : Fragment() {
 
     private fun getFilmler(page: Int, yukaridenEkleme:Boolean=false) {
         isLoading=true
-        gmdi.getMovie(page = page).enqueue(object : Callback<MovieResponse> {
+        getMovieDaoInterface.getMovie(page = page).enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: retrofit2.Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.body() != null) {
 

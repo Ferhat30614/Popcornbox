@@ -18,7 +18,7 @@ import retrofit2.Response
 class DiziDetailsFragment : Fragment() {
     private lateinit var binding:FragmentDiziDetailsBinding
     private lateinit var tvDetailsDaoInterface: TvDetailsDaoInterface
-    private var diziDetay: MediaDetailResponse? = null
+    private var tvshowDetail: MediaDetailResponse? = null
 
 
     override fun onCreateView(
@@ -47,9 +47,9 @@ class DiziDetailsFragment : Fragment() {
         tvDetailsDaoInterface.getTvShowDetails(tvId = id).enqueue(object : Callback<MediaDetailResponse> {
             override fun onResponse(call: Call<MediaDetailResponse>, response: Response<MediaDetailResponse>) {
                 if (response.body() != null) {
-                    diziDetay = response.body()
+                    tvshowDetail = response.body()
 
-                    diziDetay?.let { dizi ->
+                    tvshowDetail?.let { dizi ->
                         // Poster Yükleme
                         dizi.backdropPath?.let { backdropPath ->
                             Picasso.get().load("https://image.tmdb.org/t/p/w500$backdropPath")

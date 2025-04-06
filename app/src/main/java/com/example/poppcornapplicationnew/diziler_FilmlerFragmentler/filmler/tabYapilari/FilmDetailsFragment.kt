@@ -11,23 +11,23 @@ import com.example.poppcornapplicationnew.retrofit.ApiUtils
 import com.example.poppcornapplicationnew.entities.movieResponse.Movie
 import com.example.poppcornapplicationnew.retrofit.MovieDetailsDaoInterface
 import com.example.poppcornapplicationnew.R
-import com.example.poppcornapplicationnew.databinding.FragmentFilmDetaylarBinding
+import com.example.poppcornapplicationnew.databinding.FragmentFilmDetailsBinding
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FragmentFilmDetaylar : Fragment() {
-    private lateinit var binding: FragmentFilmDetaylarBinding
-    private lateinit var mddi: MovieDetailsDaoInterface
-    private var yeniFilm: MediaDetailResponse? = null
+class FilmDetailsFragment : Fragment() {
+    private lateinit var binding: FragmentFilmDetailsBinding
+    private lateinit var MovieDetailsDaoInterface: MovieDetailsDaoInterface
+    private var movieDetail: MediaDetailResponse? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFilmDetaylarBinding.inflate(inflater, container, false)
-        mddi = ApiUtils.getMovieDetailsDaoInterface()
+        binding = FragmentFilmDetailsBinding.inflate(inflater, container, false)
+        MovieDetailsDaoInterface = ApiUtils.getMovieDetailsDaoInterface()
 
         val movie = arguments?.getParcelable<Movie>("movie")
         if (movie == null) {
@@ -40,12 +40,12 @@ class FragmentFilmDetaylar : Fragment() {
     }
 
     private fun getFilmlerDetails(id: Int) {
-        mddi.getMovieDetails(movieId = id).enqueue(object : Callback<MediaDetailResponse> {
+        MovieDetailsDaoInterface.getMovieDetails(movieId = id).enqueue(object : Callback<MediaDetailResponse> {
             override fun onResponse(call: Call<MediaDetailResponse>, response: Response<MediaDetailResponse>) {
                 if (response.body() != null) {
-                    yeniFilm = response.body()
+                    movieDetail = response.body()
 
-                    yeniFilm?.let { film ->
+                    movieDetail?.let { film ->
                         // Poster Yükleme
                         film.backdropPath?.let { backdropPath ->
                             Picasso.get().load("https://image.tmdb.org/t/p/w500$backdropPath")
