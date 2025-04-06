@@ -1,7 +1,6 @@
 package com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -81,13 +80,7 @@ class FilmlerFragment : Fragment() {
                         !list.any { it.id==movie.id }
                     }
                     list.addAll(newList)
-
-
                     isLoading=false
-
-
-
-
                     adapter.notifyDataSetChanged()
 
                 }
@@ -99,9 +92,5 @@ class FilmlerFragment : Fragment() {
         })
     }
 
-    // gptnin kodu aaa
-    fun filterMovies(query: String) {
-        val filteredList = list.filter { it.title.contains(query, ignoreCase = true) }
-        adapter.updateList(filteredList)
-    }
+
 }

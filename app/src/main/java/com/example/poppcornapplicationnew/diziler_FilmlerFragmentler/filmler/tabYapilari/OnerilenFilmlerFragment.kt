@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.poppcornapplicationnew.adapter.MovieAdapter
+import com.example.poppcornapplicationnew.adapter.OnerilenFilmlerAdapter
 import com.example.poppcornapplicationnew.retrofit.ApiUtils
 import com.example.poppcornapplicationnew.entities.movieResponse.Movie
 import com.example.poppcornapplicationnew.entities.movieResponse.MovieResponse
@@ -21,7 +21,7 @@ class OnerilenFilmlerFragment : Fragment() {
 
 
     private lateinit var binding: FragmentOnerilenFilmlerBinding
-    private lateinit var adapter: MovieAdapter
+    private lateinit var adapter: OnerilenFilmlerAdapter
     private lateinit var getMovieDaoInterface: MovieDaoInterface
     private lateinit var list:ArrayList<Movie>
 
@@ -35,6 +35,14 @@ class OnerilenFilmlerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val movie = arguments?.getParcelable<Movie>("movie")
+        if (movie == null) {
+            Log.e("fragment onerilen filmler", "Movie argümanı eksik")
+        }else{
+            Log.e("fragment onerilen filmler", "Movie argümanı eksiksiz")
+
+        }
+
         binding = FragmentOnerilenFilmlerBinding.inflate(inflater,container,false)
 
         binding.rv.setHasFixedSize(true)
@@ -43,7 +51,7 @@ class OnerilenFilmlerFragment : Fragment() {
 
 
         list= ArrayList()
-        adapter= MovieAdapter(requireContext(),list)
+        adapter= OnerilenFilmlerAdapter(requireContext(),list)
         binding.rv.adapter=adapter
 
 

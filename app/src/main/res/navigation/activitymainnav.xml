@@ -64,6 +64,18 @@
             android:id="@+id/action_diziDetailsFragment_to_benzerDizilerFragment"
             app:destination="@id/benzerDizilerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/onerilenFilmlerFragment"
+        android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.tabYapilari.OnerilenFilmlerFragment"
+        android:label="fragment_onerilen_filmler"
+        tools:layout="@layout/fragment_onerilen_filmler" >
+        <action
+            android:id="@+id/action_onerilenFilmlerFragment_to_movieDetails"
+            app:destination="@id/movieDetails"
+            app:popUpTo="@id/onerilenFilmlerFragment"
+            app:popUpToInclusive="true"
+            />
+    </fragment>
 
 
 </navigation>

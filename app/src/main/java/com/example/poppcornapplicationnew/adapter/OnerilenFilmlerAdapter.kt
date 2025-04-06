@@ -6,14 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.FilmlerFragmentDirections
-import com.example.poppcornapplicationnew.entities.movieResponse.Movie
 import com.example.poppcornapplicationnew.R
+import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.FilmlerFragmentDirections
+import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.tabYapilari.OnerilenFilmlerFragmentDirections
+import com.example.poppcornapplicationnew.entities.movieResponse.Movie
 import com.squareup.picasso.Picasso
 
-class MovieAdapter (private val mcontext:Context,private var  movieArraylist:List<Movie>):RecyclerView.Adapter<MovieAdapter.NesneTutucu>() {
+class OnerilenFilmlerAdapter (private val mcontext:Context,private var  movieArraylist:List<Movie>):RecyclerView.Adapter<OnerilenFilmlerAdapter.NesneTutucu>() {
 
 
 
@@ -53,13 +55,22 @@ class MovieAdapter (private val mcontext:Context,private var  movieArraylist:Lis
         }
 
         holder.Card.setOnClickListener(){
+//OnerilenFilmlerAdapter  --> Film detaik
+            // OnerilenFilmlerFragment'ten MovieDetails'e geçiş
+            val action = OnerilenFilmlerFragmentDirections.actionOnerilenFilmlerFragmentToMovieDetails(nesnem)
 
-            val action= FilmlerFragmentDirections.actionfilmdetaya(nesnem,)
-            Navigation.findNavController(holder.imageViewFilm).navigate(action)
+            // NavController ile geçiş yapılırken popUpTo kullanımı
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.onerilenFilmlerFragment, true)  // Kaynak fragment
+                .build()
+
+            // Geçişi başlat
+            Navigation.findNavController(holder.imageViewFilm).navigate(action, navOptions)
 
         }
 
     }
+
 
 
 

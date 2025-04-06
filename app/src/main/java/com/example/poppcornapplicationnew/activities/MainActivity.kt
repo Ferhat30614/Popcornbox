@@ -79,6 +79,9 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
                    value=true
                     Log.e("merhaba değeri ben true yaptım",value.toString())
 
+                    controller.navigate(R.id.onerilenFilmlerFragment)
+
+
 
 
 
@@ -163,11 +166,6 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
 
     override fun onQueryTextChange(newText: String?): Boolean {
         Log.e("onQueryTextChange",newText.toString())
-
-
-        // gptnin kodu aaa
-        val fragment = supportFragmentManager.findFragmentById(R.id.navigation_host_fragment) as? FilmlerFragment
-        fragment?.filterMovies(newText.orEmpty()) // Arama fonksiyonunu çağır
 
         return true
     }

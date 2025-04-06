@@ -36,6 +36,8 @@ class FilmDetailsFragment : Fragment() {
             getFilmlerDetails(movie.id)
         }
 
+
+
         return binding.root
     }
 

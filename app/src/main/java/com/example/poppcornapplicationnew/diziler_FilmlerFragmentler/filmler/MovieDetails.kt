@@ -29,6 +29,8 @@ class MovieDetails : Fragment() {
         val Movie = bundle.myMovie
 
 
+
+
         // Fragmentlere Movie nesnesini gönder
         val bundleFilmDetailsFragment = FilmDetailsFragment().apply {
             arguments = Bundle().apply {
@@ -41,11 +43,18 @@ class MovieDetails : Fragment() {
                 putParcelable("movie", Movie) // Movie nesnesini Bundle'a koy
             }
         }
+        val bundleOnerilenFilmlerFragment = OnerilenFilmlerFragment().apply {
+            arguments = Bundle().apply {
+                putParcelable("movie", Movie) // Movie nesnesini Bundle'a koy
+            }
+        }
+
+
 
 
         fragmentList.add(bundleFilmDetailsFragment)
         fragmentList.add(bundleBenzerFilmlerFragment)
-        fragmentList.add(OnerilenFilmlerFragment())
+        fragmentList.add(bundleOnerilenFilmlerFragment)
 
 
 
