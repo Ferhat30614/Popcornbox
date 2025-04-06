@@ -26,12 +26,20 @@ class FragmentBenzerFilmler : Fragment() {
     private var currentpage = 1
     private var totalpage = 1
     private var isLoading = false
+    private lateinit var getMovieIds:List<Int>
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val movie = arguments?.getParcelable<Movie>("movie")
+        if (movie == null) {
+            Log.e("FragmentFilmDetaylar", "Movie argümanı eksik")
+        } else {
+            getMovieIds = movie.genreIds.toList()
+        }
         binding = FragmentBenzerFilmlerBinding.inflate(inflater, container, false)
 
         binding.rv.setHasFixedSize(true)
@@ -76,12 +84,13 @@ class FragmentBenzerFilmler : Fragment() {
                         !list.any { it.id == movie.id }
                     }
 
-                    // Filtrelenmiş listeden yalnızca kategori ID'si 28 olanları seç
-                    val actionMovies = newList.filter { movie ->
-                        movie.genreIds.contains(27)
+                    //
+                    var actionMovies=newList.filter { movie ->
+
+                        movie.genreIds.any{it in getMovieIds}
                     }
 
-                    // Aksiyon filmlerini listeye ekle
+                    //  listeye ekle
                     list.addAll(actionMovies)
 
                     isLoading = false

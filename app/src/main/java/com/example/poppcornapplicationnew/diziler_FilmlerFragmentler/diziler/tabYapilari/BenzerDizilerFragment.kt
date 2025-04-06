@@ -16,7 +16,6 @@ import com.example.poppcornapplicationnew.databinding.FragmentBenzerDizilerBindi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.math.log
 
 class BenzerDizilerFragment:Fragment() {
 
@@ -26,6 +25,7 @@ class BenzerDizilerFragment:Fragment() {
     private lateinit var list: ArrayList<TVShow>
     private var currenPage=1
     private var totalpage=1
+    private lateinit var getTvShowIds:List<Int>
 
     private var isLoading=false
 
@@ -37,7 +37,13 @@ class BenzerDizilerFragment:Fragment() {
         val dizi = arguments?.getParcelable<TVShow>("dizi")
         if (dizi == null) {
             Log.e("tvshowdan aldığın Tvshow nesnesi NUll ","tvshowdan aldığın Tvshow nesnesi NUll ")
+
+        }else{
+            getTvShowIds=dizi.genreIds.toList()
         }
+
+
+
 
 
         binding = FragmentBenzerDizilerBinding.inflate(inflater, container, false)
@@ -98,12 +104,11 @@ class BenzerDizilerFragment:Fragment() {
                     Log.e("liste boyutu",list.size.toString())
 
 
-                    var targetIds= setOf(10759,35)
-
                     var actionseries=filterliListim.filter { tvShow ->
 
-                        tvShow.genreIds.any{it in targetIds}
+                        tvShow.genreIds.any{it in getTvShowIds}
                     }
+
 
                     list.addAll(actionseries)
 
