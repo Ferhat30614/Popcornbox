@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Diziler_FilmlerFragmentler.Diziler.TVShowDetails">
+    tools:context=".diziler_FilmlerFragmentler.diziler.TVShowDetails">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout1"

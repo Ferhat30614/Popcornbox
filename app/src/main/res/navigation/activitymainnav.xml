@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dizilerFragment"
-        android:name="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.DizilerFragment"
+        android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.DizilerFragment"
         android:label="fragment_diziler"
         tools:layout="@layout/fragment_diziler" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/filmlerFragment"
-        android:name="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Filmler.FilmlerFragment"
+        android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.FilmlerFragment"
         android:label="fragment_filmler"
         tools:layout="@layout/fragment_filmler" >
         <action
@@ -26,42 +26,42 @@
     </fragment>
     <fragment
         android:id="@+id/movieDetails"
-        android:name="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Filmler.MovieDetails"
+        android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.MovieDetails"
         android:label="fragment_movie_details"
         tools:layout="@layout/fragment_movie_details" >
         <argument
             android:name="MyMovie"
-            app:argType="com.example.poppcornapplicationnew.Entities.MovieResponse.Movie" />
+            app:argType="com.example.poppcornapplicationnew.entities.movieResponse.Movie" />
     </fragment>
     <fragment
         android:id="@+id/TVShowDetails"
-        android:name="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TVShowDetails"
+        android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.TVShowDetails"
         android:label="fragment_tv_show_details"
         tools:layout="@layout/fragment_tv_show_details" >
         <argument
             android:name="mydizi"
-            app:argType="com.example.poppcornapplicationnew.Entities.TVShowResponse.TVShow" />
+            app:argType="com.example.poppcornapplicationnew.entities.tvShowResponse.TVShow" />
     </fragment>
     <fragment
         android:id="@+id/benzerDizilerFragment"
-        android:name="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.BenzerDizilerFragment"
+        android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.tabYapilari.BenzerDizilerFragment"
         android:label="fragment_benzer_diziler"
         tools:layout="@layout/fragment_benzer_diziler">
+
         <argument
-            android:name="IdList"
-            app:argType="integer[]" />
+            android:name="idlistesi"
+            app:argType="integer[]"
+            app:nullable="false"/>
     </fragment>
     <fragment
         android:id="@+id/diziDetailsFragment"
-        android:name="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.DiziDetailsFragment"
+        android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.tabYapilari.DiziDetailsFragment"
         android:label="fragment_dizi_details"
         tools:layout="@layout/fragment_dizi_details"
         >
-        <argument
-            android:name="myHead"
-            app:argType="com.example.poppcornapplicationnew.Diziler_FilmlerFragmentler.Diziler.TabYapilari.BenzerDizilerFragment" />
+
         <action
-            android:id="@+id/action_benzerDizilerFragmente"
+            android:id="@+id/action_diziDetailsFragment_to_benzerDizilerFragment"
             app:destination="@id/benzerDizilerFragment" />
     </fragment>
 
