@@ -33,6 +33,10 @@ class DizilerFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+
+        Log.e("Diziler Fragment ","Diziler Fragment Açıldı")
+
+
         binding = FragmentDizilerBinding.inflate(inflater, container, false)
 
         binding.rvTVShow.setHasFixedSize(true)
@@ -61,8 +65,6 @@ class DizilerFragment : Fragment() {
                     currenPage++
                     getDiziler(currenPage)
                 }
-
-
             }
         })
 
@@ -82,11 +84,8 @@ class DizilerFragment : Fragment() {
                     var filterliListim=newList.filter {tvShow ->
                         !list.any{it.id==tvShow.id}
                     }
-
                     list.addAll(filterliListim)
-
                 }
-                Log.e("liste boyutu",list.size.toString())
 
                 isLoading=false
                 adapter.notifyDataSetChanged()

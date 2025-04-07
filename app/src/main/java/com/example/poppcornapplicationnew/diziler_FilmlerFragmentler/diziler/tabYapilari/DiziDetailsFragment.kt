@@ -24,6 +24,10 @@ class DiziDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        Log.e("DiziDetails Fragment ","DiziDetails Fragment Açıldı")
+
+
         binding = FragmentDiziDetailsBinding.inflate(inflater, container, false)
         tvDetailsDaoInterface = ApiUtils.getTvDetailsDaoInterface()
 

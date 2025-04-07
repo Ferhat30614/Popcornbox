@@ -1,6 +1,7 @@
 package com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler
 import DiziDetailsFragment
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,17 +20,22 @@ class TVShowDetails : Fragment() {
     private val fragmentList = ArrayList<Fragment>()
     private val fragmentTitleList = ArrayList<String>()
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
+        Log.e("TVShowDetails Fragment ","TVShowDetails Fragment Açıldı")
 
         binding = FragmentTvShowDetailsBinding.inflate(inflater,container,false)
         val bundle: TVShowDetailsArgs by navArgs()
         val TVShow = bundle.mydizi
+
+        if (TVShow==null){
+            Log.e("TvShowDetails Fragment Sayfası","TvShow Argümanı Eksik")
+        }
+
+
 
 
 
@@ -77,8 +83,5 @@ class TVShowDetails : Fragment() {
         override fun createFragment(position: Int): Fragment {
             return fragmentList[position]
         }
-
     }
-
-
 }

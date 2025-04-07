@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poppcornapplicationnew.adapter.OnerilenFilmlerAdapter
@@ -35,12 +36,13 @@ class OnerilenFilmlerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
+        Log.e("Onerilenler Fragment ","Onerilenler Fragment Açıldı")
+
+
         val movie = arguments?.getParcelable<Movie>("movie")
         if (movie == null) {
             Log.e("fragment onerilen filmler", "Movie argümanı eksik")
-        }else{
-            Log.e("fragment onerilen filmler", "Movie argümanı eksiksiz")
-
         }
 
         binding = FragmentOnerilenFilmlerBinding.inflate(inflater,container,false)
@@ -73,13 +75,9 @@ class OnerilenFilmlerFragment : Fragment() {
                 if(lastVisibleItemPosition == totalItemcount-1 && currentpage<totalpage&& !isLoading){
                     currentpage++
                     getFilmler(currentpage)
-
-
                 }
             }
         })
-
-
              return binding.root
     }
 
@@ -99,18 +97,11 @@ class OnerilenFilmlerFragment : Fragment() {
                         !list.any { it.id==movie.id }
                     }
 
-
                     list.addAll(newList)
-
 
                     isLoading=false
 
-                    Log.e("liste boyutu",list.size.toString())
-
-
                     adapter.notifyDataSetChanged()
-
-
 
                 }
             }
@@ -120,6 +111,4 @@ class OnerilenFilmlerFragment : Fragment() {
             }
         })
     }
-
-
 }

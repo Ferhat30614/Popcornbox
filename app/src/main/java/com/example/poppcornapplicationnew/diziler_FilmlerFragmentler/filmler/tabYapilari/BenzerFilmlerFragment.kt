@@ -33,6 +33,7 @@ class BenzerFilmlerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.e("BenzerFilmler Fragment ","BenzerFilmler Fragment Açıldı")
 
         val movie = arguments?.getParcelable<Movie>("movie")
         if (movie == null) {
@@ -94,7 +95,6 @@ class BenzerFilmlerFragment : Fragment() {
                     list.addAll(actionMovies)
 
                     isLoading = false
-                    Log.e("Liste boyutu", list.size.toString())
 
                     adapter.notifyDataSetChanged()
                 }

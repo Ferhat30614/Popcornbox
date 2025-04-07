@@ -34,6 +34,9 @@ class OnerilenDizilerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        Log.e("OnerilenDiziler Fragment ","OnerilenDiziler Fragment Açıldı")
+
+
         binding =FragmentOnerilenDizilerBinding.inflate(inflater,container,false)
 
         binding.rv.setHasFixedSize(true)
@@ -84,7 +87,6 @@ class OnerilenDizilerFragment : Fragment() {
                     list.addAll(filterliListim)
 
                 }
-                Log.e("liste boyutu",list.size.toString())
 
                 isLoading=false
                 adapter.notifyDataSetChanged()

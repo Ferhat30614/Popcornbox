@@ -26,6 +26,8 @@ class FilmDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        Log.e("FilmDetails Fragment ","FilmDetails Fragment Açıldı")
         binding = FragmentFilmDetailsBinding.inflate(inflater, container, false)
         MovieDetailsDaoInterface = ApiUtils.getMovieDetailsDaoInterface()
 

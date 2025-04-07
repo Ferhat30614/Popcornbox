@@ -10,7 +10,6 @@ import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poppcornapplicationnew.R
-import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.FilmlerFragmentDirections
 import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.tabYapilari.OnerilenFilmlerFragmentDirections
 import com.example.poppcornapplicationnew.entities.movieResponse.Movie
 import com.squareup.picasso.Picasso

@@ -1,5 +1,6 @@
 package com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,12 +25,19 @@ class MovieDetails : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
+        Log.e("MovieDetails Fragment ","MovieDetails Fragment Açıldı")
+
+
+
         binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
         val bundle: MovieDetailsArgs by navArgs()
         val Movie = bundle.myMovie
 
 
-
+        if (Movie==null){
+            Log.e("Movidetails Sayfası","Movie Argümanı Eksik")
+        }
 
         // Fragmentlere Movie nesnesini gönder
         val bundleFilmDetailsFragment = FilmDetailsFragment().apply {
@@ -48,9 +56,6 @@ class MovieDetails : Fragment() {
                 putParcelable("movie", Movie) // Movie nesnesini Bundle'a koy
             }
         }
-
-
-
 
         fragmentList.add(bundleFilmDetailsFragment)
         fragmentList.add(bundleBenzerFilmlerFragment)

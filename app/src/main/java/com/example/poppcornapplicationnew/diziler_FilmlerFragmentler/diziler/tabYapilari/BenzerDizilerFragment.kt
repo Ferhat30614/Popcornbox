@@ -33,6 +33,10 @@ class BenzerDizilerFragment:Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        Log.e("BenzerDiziler Fragment ","BenzerDiziler Fragment Açıldı")
+
+
         // TvShowdandetailden  bir tvshow nesnesi alıyoruz burada
 
         val tvshow = arguments?.getParcelable<TVShow>("dizi")
@@ -42,10 +46,6 @@ class BenzerDizilerFragment:Fragment() {
         }else{
             getTvShowIds=tvshow.genreIds.toList()
         }
-
-
-
-
 
         binding = FragmentBenzerDizilerBinding.inflate(inflater, container, false)
 
@@ -60,9 +60,6 @@ class BenzerDizilerFragment:Fragment() {
         getTVShowDaoInterface = ApiUtils.getTVDaoInterface()
 
         getDiziler(currenPage)
-
-
-
 
         binding.rv.addOnScrollListener(object : RecyclerView.OnScrollListener(){
 
@@ -95,26 +92,16 @@ class BenzerDizilerFragment:Fragment() {
                     totalpage=response.body().totalPages
                     val newList=response.body()?.results ?: emptyList()
 
-
-                    Log.e("liste boyutu",newList.size.toString())
-
-
                     var filterliListim=newList.filter {tvShow ->
                         !list.any{it.id==tvShow.id}
                     }
-                    Log.e("liste boyutu",list.size.toString())
-
-
                     var actionseries=filterliListim.filter { tvShow ->
 
                         tvShow.genreIds.any{it in getTvShowIds}
                     }
 
-
                     list.addAll(actionseries)
-
                 }
-                Log.e("liste boyutu",list.size.toString())
 
                 isLoading=false
                 adapter.notifyDataSetChanged()
