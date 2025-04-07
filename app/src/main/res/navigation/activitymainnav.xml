@@ -9,7 +9,7 @@
         android:id="@+id/dizilerFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.DizilerFragment"
         android:label="fragment_diziler"
-        tools:layout="@layout/fragment_diziler" >
+        tools:layout="@layout/fragment_diziler">
         <action
             android:id="@+id/actiontvshowdetaya"
             app:destination="@id/TVShowDetails" />
@@ -19,144 +19,158 @@
         android:id="@+id/filmlerFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.FilmlerFragment"
         android:label="fragment_filmler"
-        tools:layout="@layout/fragment_filmler" >
+        tools:layout="@layout/fragment_filmler">
         <action
             android:id="@+id/actionfilmdetaya"
             app:destination="@id/movieDetails" />
     </fragment>
+
     <fragment
         android:id="@+id/movieDetails"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.MovieDetails"
         android:label="fragment_movie_details"
-        tools:layout="@layout/fragment_movie_details" >
+        tools:layout="@layout/fragment_movie_details">
         <argument
             android:name="MyMovie"
             app:argType="com.example.poppcornapplicationnew.entities.movieResponse.Movie" />
     </fragment>
+
     <fragment
         android:id="@+id/TVShowDetails"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.TVShowDetails"
         android:label="fragment_tv_show_details"
-        tools:layout="@layout/fragment_tv_show_details" >
+        tools:layout="@layout/fragment_tv_show_details">
         <argument
             android:name="mydizi"
             app:argType="com.example.poppcornapplicationnew.entities.tvShowResponse.TVShow" />
+
+        <!-- ✅ Eklenen action -->
+        <action
+            android:id="@+id/action_TVShowDetails_to_secondTVShowDetailsFragment"
+            app:destination="@id/secondTVShowDetailsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/benzerDizilerFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.tabYapilari.BenzerDizilerFragment"
         android:label="fragment_benzer_diziler"
         tools:layout="@layout/fragment_benzer_diziler">
-
         <argument
             android:name="idlistesi"
             app:argType="integer[]"
-            app:nullable="false"/>
+            app:nullable="false" />
     </fragment>
+
     <fragment
         android:id="@+id/diziDetailsFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.tabYapilari.DiziDetailsFragment"
         android:label="fragment_dizi_details"
-        tools:layout="@layout/fragment_dizi_details"
-        >
-
+        tools:layout="@layout/fragment_dizi_details">
         <action
             android:id="@+id/action_diziDetailsFragment_to_benzerDizilerFragment"
             app:destination="@id/benzerDizilerFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/onerilenFilmlerFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.tabYapilari.OnerilenFilmlerFragment"
         android:label="fragment_onerilen_filmler"
-        tools:layout="@layout/fragment_onerilen_filmler" >
+        tools:layout="@layout/fragment_onerilen_filmler">
         <action
             android:id="@+id/action_onerilenFilmlerFragment_to_movieDetails"
             app:destination="@id/movieDetails"
             app:popUpTo="@id/onerilenFilmlerFragment"
-            app:popUpToInclusive="true"
-            />
+            app:popUpToInclusive="true" />
     </fragment>
+
     <fragment
         android:id="@+id/onerilenDizilerFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.tabYapilari.OnerilenDizilerFragment"
         android:label="fragment_onerilen_diziler"
-        tools:layout="@layout/fragment_onerilen_diziler" >
+        tools:layout="@layout/fragment_onerilen_diziler">
         <action
             android:id="@+id/action_onerilenDizilerFragment_to_secondTVShowDetailsFragment"
             app:destination="@id/secondTVShowDetailsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/actionMovieFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.MovieCategories.ActionMovieFragment"
         android:label="fragment_action_movie"
-        tools:layout="@layout/fragment_action_movie" >
+        tools:layout="@layout/fragment_action_movie">
         <action
             android:id="@+id/action_actionMovieFragment_to_movieDetails"
             app:destination="@id/movieDetails" />
     </fragment>
+
     <fragment
         android:id="@+id/actionSeriesFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.DiziCategories.ActionSeriesFragment"
         android:label="fragment_action_series"
-        tools:layout="@layout/fragment_action_series" >
+        tools:layout="@layout/fragment_action_series">
         <action
             android:id="@+id/action_actionSeriesFragment_to_TVShowDetails"
             app:destination="@id/TVShowDetails" />
     </fragment>
+
     <fragment
         android:id="@+id/adventureMovieFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.MovieCategories.AdventureMovieFragment"
         android:label="fragment_adventure_movie"
-        tools:layout="@layout/fragment_adventure_movie" >
+        tools:layout="@layout/fragment_adventure_movie">
         <action
             android:id="@+id/action_adventureMovieFragment_to_movieDetails"
             app:destination="@id/movieDetails" />
     </fragment>
+
     <fragment
         android:id="@+id/comedyMovieFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.MovieCategories.ComedyMovieFragment"
         android:label="fragment_comedy_movie"
-        tools:layout="@layout/fragment_comedy_movie" >
+        tools:layout="@layout/fragment_comedy_movie">
         <action
             android:id="@+id/action_comedyMovieFragment_to_movieDetails"
             app:destination="@id/movieDetails" />
     </fragment>
+
     <fragment
         android:id="@+id/adventureSeriesFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.DiziCategories.AdventureSeriesFragment"
         android:label="fragment_adventure_series"
-        tools:layout="@layout/fragment_adventure_series" >
+        tools:layout="@layout/fragment_adventure_series">
         <action
             android:id="@+id/action_adventureSeriesFragment_to_TVShowDetails"
             app:destination="@id/TVShowDetails" />
     </fragment>
+
     <fragment
         android:id="@+id/comedySeriesFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.DiziCategories.ComedySeriesFragment"
         android:label="fragment_comedy_series"
-        tools:layout="@layout/fragment_comedy_series" >
+        tools:layout="@layout/fragment_comedy_series">
         <action
             android:id="@+id/action_comedySeriesFragment_to_TVShowDetails"
             app:destination="@id/TVShowDetails" />
     </fragment>
+
     <fragment
         android:id="@+id/secondTVShowDetailsFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.Seconds.SecondTVShowDetailsFragment"
         android:label="fragment_second_t_v_show_details"
-        tools:layout="@layout/fragment_second_t_v_show_details" >
+        tools:layout="@layout/fragment_second_t_v_show_details">
         <argument
             android:name="mydizi2"
             app:argType="com.example.poppcornapplicationnew.entities.tvShowResponse.TVShow" />
     </fragment>
+
     <fragment
         android:id="@+id/secondOnerilenDizilerFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.Seconds.SecondTabYapilari.SecondOnerilenDizilerFragment"
         android:label="fragment_second_onerilen_diziler"
-        tools:layout="@layout/fragment_second_onerilen_diziler" >
+        tools:layout="@layout/fragment_second_onerilen_diziler">
         <action
             android:id="@+id/action_secondOnerilenDizilerFragment_to_TVShowDetails"
             app:destination="@id/TVShowDetails" />
     </fragment>
-
 
 </navigation>

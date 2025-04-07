@@ -146,9 +146,6 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
                         Toast.makeText(this, "Şu anda başka bir sayfadasınız.", Toast.LENGTH_SHORT).show()
                     }
 
-
-
-
                 }
             }
         }
