@@ -43,11 +43,9 @@
         <argument
             android:name="mydizi"
             app:argType="com.example.poppcornapplicationnew.entities.tvShowResponse.TVShow" />
-
-        <!-- ✅ Eklenen action -->
         <action
-            android:id="@+id/action_TVShowDetails_to_secondTVShowDetailsFragment"
-            app:destination="@id/secondTVShowDetailsFragment" />
+            android:id="@+id/action_TVShowDetails_self"
+            app:destination="@id/TVShowDetails" />
     </fragment>
 
     <fragment
@@ -87,11 +85,7 @@
         android:id="@+id/onerilenDizilerFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.tabYapilari.OnerilenDizilerFragment"
         android:label="fragment_onerilen_diziler"
-        tools:layout="@layout/fragment_onerilen_diziler">
-        <action
-            android:id="@+id/action_onerilenDizilerFragment_to_secondTVShowDetailsFragment"
-            app:destination="@id/secondTVShowDetailsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_onerilen_diziler"/>
 
     <fragment
         android:id="@+id/actionMovieFragment"
@@ -150,26 +144,6 @@
         tools:layout="@layout/fragment_comedy_series">
         <action
             android:id="@+id/action_comedySeriesFragment_to_TVShowDetails"
-            app:destination="@id/TVShowDetails" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/secondTVShowDetailsFragment"
-        android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.Seconds.SecondTVShowDetailsFragment"
-        android:label="fragment_second_t_v_show_details"
-        tools:layout="@layout/fragment_second_t_v_show_details">
-        <argument
-            android:name="mydizi2"
-            app:argType="com.example.poppcornapplicationnew.entities.tvShowResponse.TVShow" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/secondOnerilenDizilerFragment"
-        android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.Seconds.SecondTabYapilari.SecondOnerilenDizilerFragment"
-        android:label="fragment_second_onerilen_diziler"
-        tools:layout="@layout/fragment_second_onerilen_diziler">
-        <action
-            android:id="@+id/action_secondOnerilenDizilerFragment_to_TVShowDetails"
             app:destination="@id/TVShowDetails" />
     </fragment>
 

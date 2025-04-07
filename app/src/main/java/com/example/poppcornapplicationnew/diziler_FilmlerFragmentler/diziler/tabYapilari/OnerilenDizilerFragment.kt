@@ -51,9 +51,8 @@ class OnerilenDizilerFragment : Fragment() {
         binding.rv.layoutManager = GridLayoutManager(requireContext(), 3)
 
         list = ArrayList()
-        adapter = OnerilenDizilerAdapter(requireContext(), list) { tvShow ->
-            clickListener?.onOnerilenClick(tvShow)
-        }
+        adapter = OnerilenDizilerAdapter(this@OnerilenDizilerFragment, list)
+
 
         binding.rv.adapter = adapter
 

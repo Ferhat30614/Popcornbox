@@ -1,4 +1,5 @@
 package com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler
+
 import DiziDetailsFragment
 import android.os.Bundle
 import android.util.Log
@@ -10,53 +11,56 @@ import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import  com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.tabYapilari.BenzerDizilerFragment
+import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.tabYapilari.BenzerDizilerFragment
 import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.tabYapilari.OnerilenDizilerFragment
 import com.example.poppcornapplicationnew.databinding.FragmentTvShowDetailsBinding
 import com.example.poppcornapplicationnew.entities.tvShowResponse.TVShow
 import com.google.android.material.tabs.TabLayoutMediator
 
-
 class TVShowDetails : Fragment(), OnerilenDizilerFragment.OnOnerilenClickListener {
     private lateinit var binding: FragmentTvShowDetailsBinding
     private val fragmentList = ArrayList<Fragment>()
-    private val fragmentTitleList = ArrayList<String>()
+    private val fragmentTitleList = arrayListOf("Hakkında", "Benzerler", "Önerilenler")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         Log.e("TVShowDetails Fragment", "TVShowDetails Fragment Açıldı")
 
         binding = FragmentTvShowDetailsBinding.inflate(inflater, container, false)
-        val bundle: TVShowDetailsArgs by navArgs()
-        val TVShow = bundle.mydizi
 
-        val bundleDiziDetailsFragment = DiziDetailsFragment().apply {
+        // Argümanı al
+        val args: TVShowDetailsArgs by navArgs()
+        val tvShow = args.mydizi
+
+        // Hakkında tabı
+        val diziDetailsFragment = DiziDetailsFragment().apply {
             arguments = Bundle().apply {
-                putParcelable("dizi", TVShow)
+                putParcelable("dizi", tvShow)
             }
         }
 
-        val bundleBenzerDizilerFragment = BenzerDizilerFragment().apply {
+        // Benzerler tabı
+        val benzerDizilerFragment = BenzerDizilerFragment().apply {
             arguments = Bundle().apply {
-                putParcelable("dizi", TVShow)
+                putParcelable("dizi", tvShow)
             }
         }
 
-        val onerilenDizilerFragment = OnerilenDizilerFragment()
-        onerilenDizilerFragment.setOnClickListener(this) // 👈 önemli satır
+        // Önerilenler tabı
+        val onerilenDizilerFragment = OnerilenDizilerFragment().apply {
+            setOnClickListener(this@TVShowDetails) // 🔥 Buraya dikkat
+        }
 
-        fragmentList.add(bundleDiziDetailsFragment)
-        fragmentList.add(bundleBenzerDizilerFragment)
+        fragmentList.clear()
+        fragmentList.add(diziDetailsFragment)
+        fragmentList.add(benzerDizilerFragment)
         fragmentList.add(onerilenDizilerFragment)
 
+        // ViewPager setup
         val adapter = MyViewPagerAdapter(requireActivity())
         binding.viewpager1.adapter = adapter
-
-        fragmentTitleList.add("Hakkında")
-        fragmentTitleList.add("Benzerler")
-        fragmentTitleList.add("Önerilenler")
 
         TabLayoutMediator(binding.tablayout1, binding.viewpager1) { tab, position ->
             tab.text = fragmentTitleList[position]
@@ -65,8 +69,9 @@ class TVShowDetails : Fragment(), OnerilenDizilerFragment.OnOnerilenClickListene
         return binding.root
     }
 
+    // 🔁 Sonsuz döngü burada başlıyor
     override fun onOnerilenClick(tvShow: TVShow) {
-        val action = TVShowDetailsDirections.actionTVShowDetailsToSecondTVShowDetailsFragment(tvShow)
+        val action = TVShowDetailsDirections.actionTVShowDetailsSelf(tvShow)
         findNavController().navigate(action)
     }
 
