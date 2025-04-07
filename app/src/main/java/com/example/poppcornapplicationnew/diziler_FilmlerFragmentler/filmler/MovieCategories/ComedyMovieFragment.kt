@@ -34,7 +34,7 @@ class ComedyMovieFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
 
-        Log.e("Filmler Fragment ","Filmler Fragment Açıldı")
+        Log.e("ComedyMovie Fragment ","ComedyMovie Fragment Açıldı")
 
         binding = FragmentComedyMovieBinding.inflate(inflater, container, false)
 

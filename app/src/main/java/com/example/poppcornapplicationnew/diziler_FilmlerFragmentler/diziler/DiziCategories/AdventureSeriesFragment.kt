@@ -8,8 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.poppcornapplicationnew.adapter.CategoryAdapters.DiziAdapters.ActionSeriesAdapter
-import com.example.poppcornapplicationnew.databinding.FragmentActionSeriesBinding
+import com.example.poppcornapplicationnew.R
+import com.example.poppcornapplicationnew.adapter.CategoryAdapters.DiziAdapters.AdventureSeriesAdapter
+import com.example.poppcornapplicationnew.adapter.TVShowAdapter
+import com.example.poppcornapplicationnew.databinding.FragmentAdventureSeriesBinding
+import com.example.poppcornapplicationnew.databinding.FragmentDizilerBinding
 import com.example.poppcornapplicationnew.entities.tvShowResponse.TVShow
 import com.example.poppcornapplicationnew.entities.tvShowResponse.TVShowResponse
 import com.example.poppcornapplicationnew.retrofit.ApiUtils
@@ -18,11 +21,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+class AdventureSeriesFragment : Fragment() {
 
-class ActionSeriesFragment : Fragment() {
-
-    private lateinit var binding: FragmentActionSeriesBinding
-    private lateinit var adapter: ActionSeriesAdapter
+    private lateinit var binding: FragmentAdventureSeriesBinding
+    private lateinit var adapter: AdventureSeriesAdapter
     private lateinit var getTVShowDaoInterface: TVShowDaoInterface
 
     private lateinit var list: ArrayList<TVShow>
@@ -35,16 +37,16 @@ class ActionSeriesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        Log.e("ActionSeries Fragment ","ActionSeries Fragment Açıldı")
+        Log.e("AdventureSeries Fragment ","AdventureSeries Fragment Açıldı")
 
 
-        binding = FragmentActionSeriesBinding.inflate(inflater, container, false)
+        binding = FragmentAdventureSeriesBinding.inflate(inflater, container, false)
 
         binding.rvTVShow.setHasFixedSize(true)
         binding.rvTVShow.layoutManager = GridLayoutManager(requireContext(), 3)
 
         list=ArrayList()
-        adapter= ActionSeriesAdapter(requireContext(),list)
+        adapter= AdventureSeriesAdapter(requireContext(),list)
 
         binding.rvTVShow.adapter = adapter
 
@@ -83,12 +85,8 @@ class ActionSeriesFragment : Fragment() {
 
 
                     var filterliListim=newList.filter {tvShow ->
-                        !list.any{it.id==tvShow.id}&& tvShow.genreIds.contains(10759)
+                        !list.any{it.id==tvShow.id} && tvShow.genreIds.contains(10759)
                     }
-
-                    //Buraya ben filtreleme yapcam
-
-
                     list.addAll(filterliListim)
                 }
 
