@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
                     binding.drawer.closeDrawer(GravityCompat.START)
 
                     if (currentDestinationId==R.id.filmlerFragment){
-                        controller.navigate(R.id.onerilenFilmlerFragment)
+                        controller.navigate(R.id.actionMovieFragment)
                     }else if(currentDestinationId==R.id.dizilerFragment){
                         controller.navigate(R.id.onerilenDizilerFragment)
                     }else{

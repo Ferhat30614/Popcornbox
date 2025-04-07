@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.poppcornapplicationnew.adapter.TVShowAdapter
+import com.example.poppcornapplicationnew.adapter.OnerilenDizilerAdapter
 import com.example.poppcornapplicationnew.retrofit.ApiUtils
 import com.example.poppcornapplicationnew.entities.tvShowResponse.TVShow
 import com.example.poppcornapplicationnew.entities.tvShowResponse.TVShowResponse
@@ -20,7 +20,7 @@ import retrofit2.Response
 
 class OnerilenDizilerFragment : Fragment() {
     private lateinit var binding: FragmentOnerilenDizilerBinding
-    private lateinit var adapter: TVShowAdapter
+    private lateinit var adapter: OnerilenDizilerAdapter
     private lateinit var getTVShowDaoInterface: TVShowDaoInterface
 
     private lateinit var list: ArrayList<TVShow>
@@ -43,7 +43,7 @@ class OnerilenDizilerFragment : Fragment() {
         binding.rv.layoutManager = GridLayoutManager(requireContext(), 3)
 
         list=ArrayList()
-        adapter= TVShowAdapter(requireContext(),list)
+        adapter= OnerilenDizilerAdapter(requireContext(),list)
 
         binding.rv.adapter = adapter
 

@@ -80,7 +80,20 @@
         android:id="@+id/onerilenDizilerFragment"
         android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.tabYapilari.OnerilenDizilerFragment"
         android:label="fragment_onerilen_diziler"
-        tools:layout="@layout/fragment_onerilen_diziler" />
+        tools:layout="@layout/fragment_onerilen_diziler" >
+        <action
+            android:id="@+id/action_onerilenDizilerFragment_to_TVShowDetails"
+            app:destination="@id/TVShowDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/actionMovieFragment"
+        android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.MovieCategories.ActionMovieFragment"
+        android:label="fragment_action_movie"
+        tools:layout="@layout/fragment_action_movie" >
+        <action
+            android:id="@+id/action_actionMovieFragment_to_movieDetails"
+            app:destination="@id/movieDetails" />
+    </fragment>
 
 
 </navigation>
