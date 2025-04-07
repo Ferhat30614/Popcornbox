@@ -7,7 +7,7 @@
     tools:context=".diziler_FilmlerFragmentler.diziler.TVShowDetails">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tablayout2"
+        android:id="@+id/tablayout1"
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginTop="60dp"
@@ -22,5 +22,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tablayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/tablayout1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

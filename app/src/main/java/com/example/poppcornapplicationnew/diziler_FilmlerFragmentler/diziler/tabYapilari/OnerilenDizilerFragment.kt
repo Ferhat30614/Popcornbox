@@ -49,6 +49,9 @@ class OnerilenDizilerFragment : Fragment() {
 
         getTVShowDaoInterface = ApiUtils.getTVDaoInterface()
 
+
+
+
         getDiziler(currenPage)
 
         binding.rv.addOnScrollListener(object : RecyclerView.OnScrollListener(){

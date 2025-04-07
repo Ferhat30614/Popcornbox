@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.poppcornapplicationnew.R
+import com.example.poppcornapplicationnew.adapter.SecondAdapters.SecondBenzerDizilerAdapter
 import com.example.poppcornapplicationnew.adapter.TVShowAdapter
-import com.example.poppcornapplicationnew.databinding.FragmentBenzerDizilerBinding
+import com.example.poppcornapplicationnew.databinding.FragmentSecondBenzerDizilerBinding
 import com.example.poppcornapplicationnew.entities.tvShowResponse.TVShow
 import com.example.poppcornapplicationnew.entities.tvShowResponse.TVShowResponse
 import com.example.poppcornapplicationnew.retrofit.ApiUtils
@@ -21,8 +21,8 @@ import retrofit2.Response
 
 class SecondBenzerDizilerFragment : Fragment(){
 
-    private lateinit var binding: FragmentBenzerDizilerBinding
-    private lateinit var adapter: TVShowAdapter
+    private lateinit var binding: FragmentSecondBenzerDizilerBinding
+    private lateinit var adapter: SecondBenzerDizilerAdapter
     private lateinit var getTVShowDaoInterface: TVShowDaoInterface
     private lateinit var list: ArrayList<TVShow>
     private var currenPage=1
@@ -36,12 +36,12 @@ class SecondBenzerDizilerFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
 
-        Log.e("BenzerDiziler Fragment ","BenzerDiziler Fragment Açıldı")
+        Log.e("SecondBenzerDiziler Fragment ","SecondBenzerDiziler Fragment Açıldı")
 
 
         // TvShowdandetailden  bir tvshow nesnesi alıyoruz burada
 
-        val tvshow = arguments?.getParcelable<TVShow>("dizi")
+        val tvshow = arguments?.getParcelable<TVShow>("dizi2")
         if (tvshow == null) {
             Log.e("tvshowdan aldığın Tvshow nesnesi NUll ","tvshowdan aldığın Tvshow nesnesi NUll ")
 
@@ -49,13 +49,13 @@ class SecondBenzerDizilerFragment : Fragment(){
             getTvShowIds=tvshow.genreIds.toList()
         }
 
-        binding = FragmentBenzerDizilerBinding.inflate(inflater, container, false)
+        binding = FragmentSecondBenzerDizilerBinding.inflate(inflater, container, false)
 
         binding.rv.setHasFixedSize(true)
         binding.rv.layoutManager = GridLayoutManager(requireContext(), 3)
 
         list=ArrayList()
-        adapter= TVShowAdapter(requireContext(),list)
+        adapter= SecondBenzerDizilerAdapter(requireContext(),list)
 
         binding.rv.adapter = adapter
 

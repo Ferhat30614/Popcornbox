@@ -1,4 +1,4 @@
-package com.example.poppcornapplicationnew.adapter
+package com.example.poppcornapplicationnew.adapter.SecondAdapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,14 +9,16 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poppcornapplicationnew.R
-import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.tabYapilari.OnerilenDizilerFragmentDirections
+import com.example.poppcornapplicationnew.adapter.TVShowAdapter
+import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.DizilerFragmentDirections
 import com.example.poppcornapplicationnew.entities.tvShowResponse.TVShow
 import com.squareup.picasso.Picasso
 
-class OnerilenDizilerAdapter(
+class SecondBenzerDizilerAdapter (
     private val mcontext: Context,
     private val tvShowArrayList: List<TVShow>
-) : RecyclerView.Adapter<OnerilenDizilerAdapter.NesneTutucu>()  {
+) : RecyclerView.Adapter<SecondBenzerDizilerAdapter.NesneTutucu>() {
+
     inner class NesneTutucu(layout: View) : RecyclerView.ViewHolder(layout) {
         var card: CardView = layout.findViewById(R.id.Card)
         var imageViewFilm: ImageView = layout.findViewById(R.id.imageViewFilm)
@@ -43,12 +45,8 @@ class OnerilenDizilerAdapter(
 
         holder.card.setOnClickListener {
 
-
-            val action=OnerilenDizilerFragmentDirections.actionOnerilenDizilerFragmentToSecondTVShowDetailsFragment(nesnem)
+            val action= DizilerFragmentDirections.actiontvshowdetaya(nesnem)
             Navigation.findNavController(holder.imageViewFilm).navigate(action)
-
-
-
 
         }
     }

@@ -34,8 +34,8 @@ class SecondTVShowDetailsFragment : Fragment() {
         Log.e("SecondTVShowDetails Fragment ","SecondTVShowDetails Fragment Açıldı")
 
         binding = FragmentSecondTVShowDetailsBinding.inflate(inflater,container,false)
-        val bundle: TVShowDetailsArgs by navArgs()
-        val TVShow = bundle.mydizi
+        val bundle: SecondTVShowDetailsFragmentArgs by navArgs()
+        val TVShow = bundle.mydizi2
 
         if (TVShow==null){
             Log.e("SecondTVShowDetails Fragment Sayfası","TvShow Argümanı Eksik")
@@ -48,13 +48,13 @@ class SecondTVShowDetailsFragment : Fragment() {
         // Fragmentlere TVShow nesnesini gönder
         val bundleSecondDiziDetailsFragment = SecondDiziDetailsFragment().apply {
             arguments = Bundle().apply {
-                putParcelable("dizi", TVShow) // Movie nesnesini Bundle'a koy
+                putParcelable("dizi2", TVShow) // Movie nesnesini Bundle'a koy
             }
         }
 
         val bundleSecondBenzerDizilerFragment = SecondBenzerDizilerFragment().apply {
             arguments = Bundle().apply {
-                putParcelable("dizi", TVShow) // tvshow nesnesini Bundle'a koy
+                putParcelable("dizi2", TVShow) // tvshow nesnesini Bundle'a koy
             }
         }
 
