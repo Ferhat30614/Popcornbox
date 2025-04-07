@@ -112,6 +112,15 @@
             android:id="@+id/action_adventureMovieFragment_to_movieDetails"
             app:destination="@id/movieDetails" />
     </fragment>
+    <fragment
+        android:id="@+id/comedyMovieFragment"
+        android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.MovieCategories.ComedyMovieFragment"
+        android:label="fragment_comedy_movie"
+        tools:layout="@layout/fragment_comedy_movie" >
+        <action
+            android:id="@+id/action_comedyMovieFragment_to_movieDetails"
+            app:destination="@id/movieDetails" />
+    </fragment>
 
 
 </navigation>

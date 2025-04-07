@@ -77,11 +77,13 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
                     var currentDestinationId=controller.currentDestination?.id
                     binding.drawer.closeDrawer(GravityCompat.START)
 
-                    if (currentDestinationId==R.id.filmlerFragment){
+                    if (currentDestinationId==R.id.filmlerFragment || currentDestinationId==R.id.actionMovieFragment
+                        || currentDestinationId==R.id.adventureMovieFragment || currentDestinationId==R.id.comedyMovieFragment){
                         controller.navigate(R.id.actionMovieFragment)
                     }else if(currentDestinationId==R.id.dizilerFragment){
                         controller.navigate(R.id.actionSeriesFragment)
                     }else{
+
                         Toast.makeText(this, "Şu anda başka bir sayfadasınız.", Toast.LENGTH_SHORT).show()
                     }
 
@@ -94,6 +96,17 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
                     binding.drawer.closeDrawer(GravityCompat.START)
                     Toast.makeText(this, "Komedi seçildi!", Toast.LENGTH_SHORT).show()
 
+                    var currentDestinationId=controller.currentDestination?.id
+
+                    if (currentDestinationId==R.id.filmlerFragment){
+                        controller.navigate(R.id.comedyMovieFragment)
+                    }else if(currentDestinationId==R.id.dizilerFragment){
+                        controller.navigate(R.id.adventureMovieFragment)
+                    }else{
+
+
+                        Toast.makeText(this, "Şu anda başka bir sayfadasınız.", Toast.LENGTH_SHORT).show()
+                    }
 
 
 
@@ -112,6 +125,8 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
                     }else if(currentDestinationId==R.id.dizilerFragment){
                         controller.navigate(R.id.adventureMovieFragment)
                     }else{
+
+
                         Toast.makeText(this, "Şu anda başka bir sayfadasınız.", Toast.LENGTH_SHORT).show()
                     }
 
