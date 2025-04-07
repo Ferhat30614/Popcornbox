@@ -8,8 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.poppcornapplicationnew.adapter.CategoryAdapters.MovieAdapters.ActionMovieAdapter
-import com.example.poppcornapplicationnew.databinding.FragmentActionMovieBinding
+import com.example.poppcornapplicationnew.R
+import com.example.poppcornapplicationnew.adapter.CategoryAdapters.MovieAdapters.AdventureMovieAdapter
+import com.example.poppcornapplicationnew.adapter.MovieAdapter
+import com.example.poppcornapplicationnew.databinding.FragmentAdventureMovieBinding
+import com.example.poppcornapplicationnew.databinding.FragmentFilmlerBinding
 import com.example.poppcornapplicationnew.entities.movieResponse.Movie
 import com.example.poppcornapplicationnew.entities.movieResponse.MovieResponse
 import com.example.poppcornapplicationnew.retrofit.ApiUtils
@@ -17,9 +20,11 @@ import com.example.poppcornapplicationnew.retrofit.MovieDaoInterface
 import retrofit2.Callback
 import retrofit2.Response
 
-class ActionMovieFragment : Fragment() {
-    private lateinit var binding: FragmentActionMovieBinding
-    private lateinit var adapter: ActionMovieAdapter
+
+class AdventureMovieFragment : Fragment() {
+
+    private lateinit var binding: FragmentAdventureMovieBinding
+    private lateinit var adapter: AdventureMovieAdapter
     private lateinit var getMovieDaoInterface: MovieDaoInterface
     private lateinit var list:ArrayList<Movie>
 
@@ -27,22 +32,19 @@ class ActionMovieFragment : Fragment() {
     private var totalpage=1
     private var isLoading=false
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
 
-        Log.e(" aksşyon Filmler Fragment ","aksiyon Filmler Fragment Açıldı")
+        Log.e("adventure Filmler Fragment ","adventure  Filmler Fragment Açıldı")
 
-        binding = FragmentActionMovieBinding.inflate(inflater,container,false)
+        binding = FragmentAdventureMovieBinding.inflate(inflater, container, false)
 
         binding.rvMovie.setHasFixedSize(true)
         binding.rvMovie.layoutManager = GridLayoutManager(requireContext(), 3)
 
 
         list= ArrayList()
-        adapter= ActionMovieAdapter(requireContext(),list)
+        adapter= AdventureMovieAdapter(requireContext(),list)
         binding.rvMovie.adapter=adapter
 
 
@@ -68,6 +70,7 @@ class ActionMovieFragment : Fragment() {
 
         return binding.root
     }
+
     private fun getFilmler(page: Int, yukaridenEkleme:Boolean=false) {
         isLoading=true
         getMovieDaoInterface.getMovie(page = page).enqueue(object : Callback<MovieResponse> {
@@ -80,7 +83,7 @@ class ActionMovieFragment : Fragment() {
                     val yenilist=response.body().results
 
                     val newList=yenilist.filter { movie: Movie ->
-                        !list.any { it.id==movie.id }&& movie.genreIds.contains(28)
+                        !list.any { it.id==movie.id }  && movie.genreIds.contains(12)
                     }
 
 

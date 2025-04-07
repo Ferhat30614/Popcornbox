@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
                     if (currentDestinationId==R.id.filmlerFragment){
                         controller.navigate(R.id.actionMovieFragment)
                     }else if(currentDestinationId==R.id.dizilerFragment){
-                        controller.navigate(R.id.onerilenDizilerFragment)
+                        controller.navigate(R.id.actionSeriesFragment)
                     }else{
                         Toast.makeText(this, "Şu anda başka bir sayfadasınız.", Toast.LENGTH_SHORT).show()
                     }
@@ -103,6 +103,18 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
                     // Diziler fragment'ine geç
                     binding.drawer.closeDrawer(GravityCompat.START)
                     Toast.makeText(this, "Macera seçildi!", Toast.LENGTH_SHORT).show()
+
+
+                    var currentDestinationId=controller.currentDestination?.id
+
+                    if (currentDestinationId==R.id.filmlerFragment){
+                        controller.navigate(R.id.adventureMovieFragment)
+                    }else if(currentDestinationId==R.id.dizilerFragment){
+                        controller.navigate(R.id.adventureMovieFragment)
+                    }else{
+                        Toast.makeText(this, "Şu anda başka bir sayfadasınız.", Toast.LENGTH_SHORT).show()
+                    }
+
 
 
 

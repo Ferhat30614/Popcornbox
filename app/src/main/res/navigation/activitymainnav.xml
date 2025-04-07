@@ -94,6 +94,24 @@
             android:id="@+id/action_actionMovieFragment_to_movieDetails"
             app:destination="@id/movieDetails" />
     </fragment>
+    <fragment
+        android:id="@+id/actionSeriesFragment"
+        android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.DiziCategories.ActionSeriesFragment"
+        android:label="fragment_action_series"
+        tools:layout="@layout/fragment_action_series" >
+        <action
+            android:id="@+id/action_actionSeriesFragment_to_TVShowDetails"
+            app:destination="@id/TVShowDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/adventureMovieFragment"
+        android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.MovieCategories.AdventureMovieFragment"
+        android:label="fragment_adventure_movie"
+        tools:layout="@layout/fragment_adventure_movie" >
+        <action
+            android:id="@+id/action_adventureMovieFragment_to_movieDetails"
+            app:destination="@id/movieDetails" />
+    </fragment>
 
 
 </navigation>
