@@ -76,6 +76,11 @@
             app:popUpToInclusive="true"
             />
     </fragment>
+    <fragment
+        android:id="@+id/onerilenDizilerFragment"
+        android:name="com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.tabYapilari.OnerilenDizilerFragment"
+        android:label="fragment_onerilen_diziler"
+        tools:layout="@layout/fragment_onerilen_diziler" />
 
 
 </navigation>

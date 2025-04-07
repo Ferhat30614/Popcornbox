@@ -21,7 +21,6 @@ import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.Fil
 
 class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
     private lateinit var binding: ActivityMainBinding
-     var value:Boolean=false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,23 +72,28 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
         radioGroupCategories.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.radioButtonAksiyon -> {
-                    // Filmler fragment'ine geç
-                    binding.drawer.closeDrawer(GravityCompat.START)
                     Toast.makeText(this, "Aksiyon Seçildi!", Toast.LENGTH_SHORT).show()
-                   value=true
-                    Log.e("merhaba değeri ben true yaptım",value.toString())
 
-                    controller.navigate(R.id.onerilenFilmlerFragment)
+                    var currentDestinationId=controller.currentDestination?.id
+                    binding.drawer.closeDrawer(GravityCompat.START)
 
+                    if (currentDestinationId==R.id.filmlerFragment){
+                        controller.navigate(R.id.onerilenFilmlerFragment)
+                    }else if(currentDestinationId==R.id.dizilerFragment){
+                        controller.navigate(R.id.onerilenDizilerFragment)
+                    }else{
+                        Toast.makeText(this, "Şu anda başka bir sayfadasınız.", Toast.LENGTH_SHORT).show()
+                    }
 
 
 
 
                 }
                 R.id.radioButtonKomedi -> {
-                    // Diziler fragment'ine geç
+
                     binding.drawer.closeDrawer(GravityCompat.START)
                     Toast.makeText(this, "Komedi seçildi!", Toast.LENGTH_SHORT).show()
+
 
 
 

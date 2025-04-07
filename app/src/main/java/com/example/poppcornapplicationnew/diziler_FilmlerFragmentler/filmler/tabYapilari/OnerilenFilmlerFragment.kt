@@ -37,7 +37,7 @@ class OnerilenFilmlerFragment : Fragment() {
     ): View? {
 
 
-        Log.e("Onerilenler Fragment ","Onerilenler Fragment Açıldı")
+        Log.e("ÖnerilenFilmler Fragment ","ÖnerilenFilmler Fragment Açıldı")
 
 
         val movie = arguments?.getParcelable<Movie>("movie")
