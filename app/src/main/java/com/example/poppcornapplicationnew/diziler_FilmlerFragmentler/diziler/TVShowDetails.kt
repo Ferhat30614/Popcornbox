@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import com.example.poppcornapplicationnew.R
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -50,7 +52,7 @@ class TVShowDetails : Fragment(), OnerilenDizilerFragment.OnOnerilenClickListene
 
         // Önerilenler tabı
         val onerilenDizilerFragment = OnerilenDizilerFragment().apply {
-            setOnClickListener(this@TVShowDetails) // 🔥 Buraya dikkat
+            setOnClickListener(this@TVShowDetails) //  Buraya dikkat
         }
 
         fragmentList.clear()
@@ -69,7 +71,7 @@ class TVShowDetails : Fragment(), OnerilenDizilerFragment.OnOnerilenClickListene
         return binding.root
     }
 
-    // 🔁 Sonsuz döngü burada başlıyor
+    // 🔁 Sonsuz döngü burada başlıyor dcd
     override fun onOnerilenClick(tvShow: TVShow) {
         val action = TVShowDetailsDirections.actionTVShowDetailsSelf(tvShow)
         findNavController().navigate(action)
@@ -79,4 +81,22 @@ class TVShowDetails : Fragment(), OnerilenDizilerFragment.OnOnerilenClickListene
         override fun getItemCount() = fragmentList.size
         override fun createFragment(position: Int) = fragmentList[position]
     }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().popBackStack(R.id.dizilerFragment, false)
+                }
+            }
+        )
+    }
+
+
+
+
+
 }
