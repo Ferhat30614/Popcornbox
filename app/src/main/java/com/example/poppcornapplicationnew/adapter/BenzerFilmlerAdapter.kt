@@ -13,10 +13,10 @@ import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.Mov
 import com.example.poppcornapplicationnew.entities.movieResponse.Movie
 import com.squareup.picasso.Picasso
 
-class OnerilenFilmlerAdapter(
+class BenzerFilmlerAdapter(
     private val fragment: Fragment,
-    private val movieList: List<Movie>
-) : RecyclerView.Adapter<OnerilenFilmlerAdapter.NesneTutucu>() {
+    private val movieArrayList: List<Movie>
+) : RecyclerView.Adapter<BenzerFilmlerAdapter.NesneTutucu>() {
 
     inner class NesneTutucu(view: View) : RecyclerView.ViewHolder(view) {
         val card: CardView = view.findViewById(R.id.Card)
@@ -28,10 +28,10 @@ class OnerilenFilmlerAdapter(
         return NesneTutucu(view)
     }
 
-    override fun getItemCount(): Int = movieList.size
+    override fun getItemCount(): Int = movieArrayList.size
 
     override fun onBindViewHolder(holder: NesneTutucu, position: Int) {
-        val movie = movieList[position]
+        val movie = movieArrayList[position]
 
         movie.posterPath?.let {
             Picasso.get()
@@ -43,7 +43,8 @@ class OnerilenFilmlerAdapter(
 
         holder.card.setOnClickListener {
             val action = MovieDetailsDirections.actionMovieDetailsSelf(movie)
-            Navigation.findNavController(fragment.requireActivity(), R.id.navigation_host_fragment).navigate(action)
+            Navigation.findNavController(fragment.requireActivity(), R.id.navigation_host_fragment)
+                .navigate(action)
         }
     }
 }

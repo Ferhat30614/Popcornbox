@@ -44,6 +44,9 @@ class TVShowAdapter(
 
         holder.card.setOnClickListener {
 
+
+
+
             val action= DizilerFragmentDirections.actiontvshowdetaya(nesnem)
             Navigation.findNavController(holder.imageViewFilm).navigate(action)
 

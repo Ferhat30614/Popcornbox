@@ -9,14 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poppcornapplicationnew.R
-import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.filmler.MovieDetailsDirections
-import com.example.poppcornapplicationnew.entities.movieResponse.Movie
+import com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler.TVShowDetailsDirections
+import com.example.poppcornapplicationnew.entities.tvShowResponse.TVShow
 import com.squareup.picasso.Picasso
 
-class OnerilenFilmlerAdapter(
+class BenzerDizilerAdapter(
     private val fragment: Fragment,
-    private val movieList: List<Movie>
-) : RecyclerView.Adapter<OnerilenFilmlerAdapter.NesneTutucu>() {
+    private val tvShowList: List<TVShow>
+) : RecyclerView.Adapter<BenzerDizilerAdapter.NesneTutucu>() {
 
     inner class NesneTutucu(view: View) : RecyclerView.ViewHolder(view) {
         val card: CardView = view.findViewById(R.id.Card)
@@ -28,12 +28,12 @@ class OnerilenFilmlerAdapter(
         return NesneTutucu(view)
     }
 
-    override fun getItemCount(): Int = movieList.size
+    override fun getItemCount(): Int = tvShowList.size
 
     override fun onBindViewHolder(holder: NesneTutucu, position: Int) {
-        val movie = movieList[position]
+        val tvShow = tvShowList[position]
 
-        movie.posterPath?.let {
+        tvShow.posterPath?.let {
             Picasso.get()
                 .load("https://image.tmdb.org/t/p/w500$it")
                 .placeholder(R.drawable.yukleniyo)
@@ -42,7 +42,7 @@ class OnerilenFilmlerAdapter(
         }
 
         holder.card.setOnClickListener {
-            val action = MovieDetailsDirections.actionMovieDetailsSelf(movie)
+            val action = TVShowDetailsDirections.actionTVShowDetailsSelf(tvShow)
             Navigation.findNavController(fragment.requireActivity(), R.id.navigation_host_fragment).navigate(action)
         }
     }
