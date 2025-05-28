@@ -16,16 +16,24 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.poppcornapplicationnew.R
 import com.example.poppcornapplicationnew.databinding.ActivityMainBinding
+import com.example.poppcornapplicationnew.LikeDao
+
 
 
 class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var likeDao: LikeDao
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        //  likes tablosundaki tüm veriler burada CSV formatında dışarıya aktarılıyor.
+        likeDao = LikeDao(this)
+        likeDao.exportLikesToCSV(this)
 
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navigation_host_fragment) as NavHostFragment
