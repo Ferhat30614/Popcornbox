@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.poppcornapplicationnew.retrofit.ApiUtils
 import com.example.poppcornapplicationnew.entities.tvShowResponse.TVShow
@@ -40,6 +41,24 @@ class DiziDetailsFragment : Fragment() {
             getDiziDetails(tvshow.id)
 
         }
+
+
+        binding.btnLike.setOnClickListener {
+            binding.btnLike.setColorFilter(ContextCompat.getColor(requireContext(), R.color.Kırmızı))
+            binding.btnDislike.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white))
+            // Veritabanına kayıt işlemi vs burada
+        }
+
+        binding.btnDislike.setOnClickListener {
+            binding.btnDislike.setColorFilter(ContextCompat.getColor(requireContext(), R.color.Kırmızı))
+            binding.btnLike.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white))
+            // Veritabanına kayıt işlemi vs burada
+        }
+
+
+
+
+
 
         return binding.root
     }
