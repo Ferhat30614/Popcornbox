@@ -1,6 +1,6 @@
 package com.example.poppcornapplicationnew.diziler_FilmlerFragmentler.diziler
 
-import DiziDetailsFragment
+import com.example.poppcornapplicationnew.DiziDetailsFragment
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment

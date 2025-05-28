@@ -5,12 +5,11 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 class PopcornBoxDatabaseHelper(context: Context) : SQLiteOpenHelper(context, "PopcornBox.db", null, 1) {
-
     override fun onCreate(db: SQLiteDatabase?) {
         val createTable = """
             CREATE TABLE likes (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                contentId INTEGER,
+                contentId INTEGER UNIQUE,
                 title TEXT,
                 type TEXT,
                 liked INTEGER,
@@ -18,7 +17,6 @@ class PopcornBoxDatabaseHelper(context: Context) : SQLiteOpenHelper(context, "Po
                 genres TEXT
             )
         """.trimIndent()
-
         db?.execSQL(createTable)
     }
 
