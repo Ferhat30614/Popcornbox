@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
         likeDao = LikeDao(this)
         likeDao.exportLikesToCSV(this)
 
+        likeDao.uploadCSVToFlask(this)
+
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navigation_host_fragment) as NavHostFragment
         val controller = navHostFragment.navController

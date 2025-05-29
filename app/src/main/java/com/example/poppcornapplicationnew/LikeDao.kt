@@ -4,9 +4,17 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
-import android.widget.Toast
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.MultipartBody
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
 import java.io.File
 import java.io.FileWriter
+import java.io.IOException
+import java.util.concurrent.TimeUnit
+
 
 class LikeDao(context: Context) {
     private val dbHelper = PopcornBoxDatabaseHelper(context)
@@ -82,11 +90,66 @@ class LikeDao(context: Context) {
 
         Log.d("CSV Export", "likes_export.csv oluşturuldu: ${csvFile.absolutePath}")
 
-
-
-
-
    }
+
+
+    fun uploadCSVToFlask(context: Context) {
+        val csvFile = File(context.getExternalFilesDir(null), "likes_export.csv")
+        if (!csvFile.exists()) {
+            Log.e("Upload", "CSV dosyası bulunamadı")
+            return
+        }
+
+        val client = OkHttpClient.Builder()
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
+            .writeTimeout(60, TimeUnit.SECONDS)
+            .build()
+
+
+        // MediaType kullanmıyoruz
+        val fileBody = okhttp3.RequestBody.create(null, csvFile)
+
+        val requestBody = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addFormDataPart("file", "likes_export.csv", fileBody)
+            .build()
+
+        val request = Request.Builder()
+            .url("http://192.168.1.143:5000/upload_csv") // IP doğru olacak
+            .post(requestBody)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("Upload", "Hata: ${e.message}")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val responseBody = response.body
+
+                if (response.isSuccessful && responseBody != null) {
+                    val bodyString = responseBody.string()
+                    Log.d("Upload", "CSV başarıyla yüklendi: $bodyString")
+                } else {
+                    val errorString = responseBody?.string() ?: "Boş cevap"
+                    Log.e("Upload", "Sunucu hatası [${response.code}]: $errorString")
+                }
+            }
+
+
+
+
+
+        })
+    }
+
+
+
+
+
+
+
 
 
 
