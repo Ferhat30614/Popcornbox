@@ -95,6 +95,7 @@ class LikeDao(context: Context) {
 
     fun uploadCSVToFlask(context: Context) {
         val csvFile = File(context.getExternalFilesDir(null), "likes_export.csv")
+
         if (!csvFile.exists()) {
             Log.e("Upload", "CSV dosyası bulunamadı")
             return
@@ -106,8 +107,6 @@ class LikeDao(context: Context) {
             .writeTimeout(60, TimeUnit.SECONDS)
             .build()
 
-
-        // MediaType kullanmıyoruz
         val fileBody = okhttp3.RequestBody.create(null, csvFile)
 
         val requestBody = MultipartBody.Builder()
@@ -136,21 +135,8 @@ class LikeDao(context: Context) {
                     Log.e("Upload", "Sunucu hatası [${response.code}]: $errorString")
                 }
             }
-
-
-
-
-
         })
     }
-
-
-
-
-
-
-
-
 
 
 }
